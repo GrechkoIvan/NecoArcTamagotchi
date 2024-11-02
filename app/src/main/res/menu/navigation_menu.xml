@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/kitchen"
+        android:icon="@drawable/ic_kitchen"
+        android:title="@string/title_kitchen" />
+
+    <item
+        android:id="@+id/entertainments"
+        android:icon="@drawable/ic_entertainments"
+        android:title="@string/title_entertainments" />
+
+    <item
+        android:id="@+id/medicine"
+        android:icon="@drawable/ic_medicine"
+        android:title="@string/title_medicine" />
+
+    <item
+        android:id="@+id/bedroom"
+        android:icon="@drawable/ic_bedroom"
+        android:title="@string/title_bedroom" />
+
+</menu>

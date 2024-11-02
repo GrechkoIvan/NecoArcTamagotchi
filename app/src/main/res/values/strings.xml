@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Neco Arc Tamagotchi</string>
+    <string name="title_home">Главная</string>
+    <string name="title_kitchen">Кухня</string>
+    <string name="title_entertainments">Веселье</string>
+    <string name="title_medicine">Лекарства</string>
+    <string name="title_bedroom">Спальня</string>
 </resources>
