@@ -5,4 +5,8 @@
     <string name="title_entertainments">Веселье</string>
     <string name="title_medicine">Лекарства</string>
     <string name="title_bedroom">Спальня</string>
+    <string name="hunger_desc">hunger stat</string>
+    <string name="happiness_desc">happiness stat</string>
+    <string name="health_desc">health stat</string>
+    <string name="energy_desc">energy stat</string>
 </resources>

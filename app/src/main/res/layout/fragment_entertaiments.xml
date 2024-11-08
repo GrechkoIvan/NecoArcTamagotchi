@@ -2,8 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@color/fragmentColor"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_color"
     tools:context=".ui.entertaiments.EntertaimentsFragment">
 
     <TextView

@@ -5,12 +5,138 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#DCDCDC">
+
+    <LinearLayout
+        android:id="@+id/stats_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/stats_panel_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:id="@+id/stat_hunger"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_hunger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_hunger_stat"
+                android:contentDescription="@string/hunger_desc"/>
+
+            <ProgressBar
+                android:id="@+id/hunger_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_happiness"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_happiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_happiness_stat"
+                android:contentDescription="@string/happiness_desc"/>
+
+            <ProgressBar
+                android:id="@+id/happiness_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_health"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_health_stat"
+                android:contentDescription="@string/health_desc"/>
+
+            <ProgressBar
+                android:id="@+id/health_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_energy"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_energy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_energy_stat"
+                android:contentDescription="@string/energy_desc"/>
+
+            <ProgressBar
+                android:id="@+id/energy_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/fragment_height"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,10 +144,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/iconColor"
-        app:itemTextColor="@color/iconColor"
-        app:labelVisibilityMode="labeled"
+        android:background="@color/color_primary"
+        app:itemIconTint="@color/navigation_icon_color"
+        app:itemTextColor="@color/navigation_icon_color"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
