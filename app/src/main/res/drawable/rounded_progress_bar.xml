@@ -1,5 +1,5 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <item android:id="@android:id/background">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
             <solid android:color="@color/progress_background_color" />
@@ -9,11 +9,11 @@
         <clip>
             <shape android:shape="rectangle">
                 <corners android:radius="20dp" />
-                <solid android:color="@android:color/holo_green_light" />
+                <solid android:color="@color/white" />
             </shape>
         </clip>
     </item>
-    <item android:id="@android:id/background">
+    <item>
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
             <solid android:color="@android:color/transparent" />
