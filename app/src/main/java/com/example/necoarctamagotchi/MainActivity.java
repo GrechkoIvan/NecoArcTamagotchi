@@ -1,6 +1,7 @@
 package com.example.necoarctamagotchi;
 
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,22 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
+
+        ProgressBar hungerBar = findViewById(R.id.hunger_progress);
+        ProgressBar happinessBar = findViewById(R.id.happiness_progress);
+        ProgressBar healthBar = findViewById(R.id.health_progress);
+        ProgressBar energyBar = findViewById(R.id.energy_progress);
+
+        ProgressColorManager progressColorManager = new ProgressColorManager();
+
+        hungerBar.setProgress(15);
+        progressColorManager.updateProgressColor(hungerBar, 15);
+        happinessBar.setProgress(60);
+        progressColorManager.updateProgressColor(happinessBar, 60);
+        healthBar.setProgress(40);
+        progressColorManager.updateProgressColor(healthBar, 40);
+        energyBar.setProgress(80);
+        progressColorManager.updateProgressColor(energyBar, 80);
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
