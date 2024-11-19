@@ -1,4 +1,4 @@
-package com.example.necoarctamagotchi.ui.medicine;
+package com.example.necoarctamagotchi.ui.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 

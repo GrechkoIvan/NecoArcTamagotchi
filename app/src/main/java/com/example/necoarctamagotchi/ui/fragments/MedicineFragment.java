@@ -1,4 +1,4 @@
-package com.example.necoarctamagotchi.ui.entertaiments;
+package com.example.necoarctamagotchi.ui.fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,25 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.ui.viewmodels.MedicineViewModel;
 
-public class EntertaimentsFragment extends Fragment {
+public class MedicineFragment extends Fragment {
 
-    private EntertaimentsViewModel mViewModel;
+    private MedicineViewModel mViewModel;
 
-    public static EntertaimentsFragment newInstance() {
-        return new EntertaimentsFragment();
+    public static MedicineFragment newInstance() {
+        return new MedicineFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_entertaiments, container, false);
+        return inflater.inflate(R.layout.fragment_medicine, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EntertaimentsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(MedicineViewModel.class);
         // TODO: Use the ViewModel
     }
 

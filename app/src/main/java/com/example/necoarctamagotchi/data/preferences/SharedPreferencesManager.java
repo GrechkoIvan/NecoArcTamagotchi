@@ -11,7 +11,7 @@ public class SharedPreferencesManager {
         sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
-    public void setHunger(int hunger) {
+    public void saveHunger(int hunger) {
         sharedPreferences.edit().putInt("hunger", hunger).apply();
     }
 
@@ -19,7 +19,7 @@ public class SharedPreferencesManager {
         return sharedPreferences.getInt("hunger", 100);
     }
 
-    public void setHappiness(int happiness) {
+    public void saveHappiness(int happiness) {
         sharedPreferences.edit().putInt("happiness", happiness).apply();
     }
 
@@ -27,7 +27,7 @@ public class SharedPreferencesManager {
         return sharedPreferences.getInt("happiness", 100);
     }
 
-    public void setEnergy(int energy) {
+    public void saveEnergy(int energy) {
         sharedPreferences.edit().putInt("energy", energy).apply();
     }
 
@@ -35,7 +35,7 @@ public class SharedPreferencesManager {
         return sharedPreferences.getInt("energy", 100);
     }
 
-    public void setHealth(int health) {
+    public void saveHealth(int health) {
         sharedPreferences.edit().putInt("health", health).apply();
     }
 
@@ -43,7 +43,7 @@ public class SharedPreferencesManager {
         return sharedPreferences.getInt("health", 100);
     }
 
-    public void setTickSpeed(int speed) {
+    public void saveTickSpeed(int speed) {
         sharedPreferences.edit().putInt("tickSpeed", speed).apply();
     }
 

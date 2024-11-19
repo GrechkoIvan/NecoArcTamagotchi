@@ -1,4 +1,4 @@
-package com.example.necoarctamagotchi;
+package com.example.necoarctamagotchi.ui.activities;
 
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -6,10 +6,12 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.necoarctamagotchi.ui.bedroom.BedroomFragment;
-import com.example.necoarctamagotchi.ui.entertaiments.EntertaimentsFragment;
-import com.example.necoarctamagotchi.ui.kitchen.KitchenFragment;
-import com.example.necoarctamagotchi.ui.medicine.MedicineFragment;
+import com.example.necoarctamagotchi.ProgressColorManager;
+import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.ui.fragments.BedroomFragment;
+import com.example.necoarctamagotchi.ui.fragments.EntertaimentsFragment;
+import com.example.necoarctamagotchi.ui.fragments.KitchenFragment;
+import com.example.necoarctamagotchi.ui.fragments.MedicineFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

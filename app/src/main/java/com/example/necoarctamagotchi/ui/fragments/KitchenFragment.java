@@ -1,4 +1,4 @@
-package com.example.necoarctamagotchi.ui.bedroom;
+package com.example.necoarctamagotchi.ui.fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,25 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
 
-public class BedroomFragment extends Fragment {
+public class KitchenFragment extends Fragment {
 
-    private BedroomViewModel mViewModel;
+    private KitchenViewModel mViewModel;
 
-    public static BedroomFragment newInstance() {
-        return new BedroomFragment();
+    public static KitchenFragment newInstance() {
+        return new KitchenFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_bedroom, container, false);
+        return inflater.inflate(R.layout.fragment_kitchen, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BedroomViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(KitchenViewModel.class);
         // TODO: Use the ViewModel
     }
 
