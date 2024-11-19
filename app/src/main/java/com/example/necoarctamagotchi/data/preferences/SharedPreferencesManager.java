@@ -11,36 +11,36 @@ public class SharedPreferencesManager {
         sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
-    public void saveHunger(int hunger) {
-        sharedPreferences.edit().putInt("hunger", hunger).apply();
+    public void saveHunger(float hunger) {
+        sharedPreferences.edit().putFloat("hunger", hunger).apply();
     }
 
-    public int getHunger() {
-        return sharedPreferences.getInt("hunger", 100);
+    public float getHunger() {
+        return sharedPreferences.getFloat("hunger", 100f);
     }
 
-    public void saveHappiness(int happiness) {
-        sharedPreferences.edit().putInt("happiness", happiness).apply();
+    public void saveHappiness(float happiness) {
+        sharedPreferences.edit().putFloat("happiness", happiness).apply();
     }
 
-    public int getHappiness() {
-        return sharedPreferences.getInt("happiness", 100);
+    public float getHappiness() {
+        return sharedPreferences.getFloat("happiness", 100f);
     }
 
-    public void saveEnergy(int energy) {
-        sharedPreferences.edit().putInt("energy", energy).apply();
+    public void saveEnergy(float energy) {
+        sharedPreferences.edit().putFloat("energy", energy).apply();
     }
 
-    public int getEnergy() {
-        return sharedPreferences.getInt("energy", 100);
+    public float getEnergy() {
+        return sharedPreferences.getFloat("energy", 100f);
     }
 
-    public void saveHealth(int health) {
-        sharedPreferences.edit().putInt("health", health).apply();
+    public void saveHealth(float health) {
+        sharedPreferences.edit().putFloat("health", health).apply();
     }
 
-    public int getHealth() {
-        return sharedPreferences.getInt("health", 100);
+    public float getHealth() {
+        return sharedPreferences.getFloat("health", 100f);
     }
 
     public void saveTickSpeed(int speed) {
@@ -48,6 +48,6 @@ public class SharedPreferencesManager {
     }
 
     public int getTickSpeed() {
-        return sharedPreferences.getInt("tickSpeed", 5000); // Значение по умолчанию
+        return sharedPreferences.getInt("tickSpeed", 5000);
     }
 }

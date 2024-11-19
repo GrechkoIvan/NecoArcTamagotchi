@@ -13,10 +13,10 @@ import java.util.Optional;
 
 public class StatsViewModel extends ViewModel {
     private final SharedPreferencesManager preferencesManager;
-    private final MutableLiveData<Integer> hunger = new MutableLiveData<>();
-    private final MutableLiveData<Integer> happiness = new MutableLiveData<>();
-    private final MutableLiveData<Integer> energy = new MutableLiveData<>();
-    private final MutableLiveData<Integer> health = new MutableLiveData<>();
+    private final MutableLiveData<Float> hunger = new MutableLiveData<>();
+    private final MutableLiveData<Float> happiness = new MutableLiveData<>();
+    private final MutableLiveData<Float> energy = new MutableLiveData<>();
+    private final MutableLiveData<Float> health = new MutableLiveData<>();
     private final MediatorLiveData<Void> updateSignal = new MediatorLiveData<>();
 
     public StatsViewModel(Context context) {
@@ -40,74 +40,74 @@ public class StatsViewModel extends ViewModel {
         return updateSignal;
     }
 
-    public LiveData<Integer> getHunger() {
+    public LiveData<Float> getHunger() {
         return hunger;
     }
 
-    public void increaseHunger(int amount) {
-        Integer hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100);
-        int newHunger = Math.min(100, hungerValue + amount);
+    public void increaseHunger(float amount) {
+        Float hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100f);
+        float newHunger = Math.min(100, hungerValue + amount);
         hunger.setValue(newHunger);
         preferencesManager.saveHunger(newHunger);
     }
 
-    public void decreaseHunger(int amount) {
-        Integer hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100);
-        int newHunger = Math.max(0, hungerValue - amount);
+    public void decreaseHunger(float amount) {
+        Float hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100f);
+        float newHunger = Math.max(0, hungerValue - amount);
         hunger.setValue(newHunger);
         preferencesManager.saveHunger(newHunger);
     }
 
-    public LiveData<Integer> getHappiness() {
+    public LiveData<Float> getHappiness() {
         return happiness;
     }
 
-    public void increaseHappiness(int amount) {
-        Integer happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100);
-        int newHappiness = Math.min(100, happinessValue + amount);
+    public void increaseHappiness(float amount) {
+        Float happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100f);
+        float newHappiness = Math.min(100, happinessValue + amount);
         happiness.setValue(newHappiness);
         preferencesManager.saveHappiness(newHappiness);
     }
 
-    public void decreaseHappiness(int amount) {
-        Integer happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100);
-        int newHappiness = Math.max(0, happinessValue - amount);
+    public void decreaseHappiness(float amount) {
+        Float happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100f);
+        float newHappiness = Math.max(0, happinessValue - amount);
         happiness.setValue(newHappiness);
         preferencesManager.saveHappiness(newHappiness);
     }
 
-    public LiveData<Integer> getEnergy() {
+    public LiveData<Float> getEnergy() {
         return energy;
     }
 
-    public void increaseEnergy(int amount) {
-        Integer energyValue = Optional.ofNullable(energy.getValue()).orElse(100);
-        int newEnergy = Math.min(100, energyValue + amount);
+    public void increaseEnergy(float amount) {
+        Float energyValue = Optional.ofNullable(energy.getValue()).orElse(100f);
+        float newEnergy = Math.min(100, energyValue + amount);
         energy.setValue(newEnergy);
         preferencesManager.saveEnergy(newEnergy);
     }
 
-    public void decreaseEnergy(int amount) {
-        Integer energyValue = Optional.ofNullable(energy.getValue()).orElse(100);
-        int newEnergy = Math.max(0, energyValue - amount);
+    public void decreaseEnergy(float amount) {
+        Float energyValue = Optional.ofNullable(energy.getValue()).orElse(100f);
+        float newEnergy = Math.max(0, energyValue - amount);
         energy.setValue(newEnergy);
         preferencesManager.saveEnergy(newEnergy);
     }
 
-    public LiveData<Integer> getHealth() {
+    public LiveData<Float> getHealth() {
         return health;
     }
 
-    public void increaseHealth(int amount) {
-        Integer healthValue = Optional.ofNullable(health.getValue()).orElse(100);
-        int newHealth = Math.min(100, healthValue + amount);
+    public void increaseHealth(float amount) {
+        Float healthValue = Optional.ofNullable(health.getValue()).orElse(100f);
+        float newHealth = Math.min(100, healthValue + amount);
         health.setValue(newHealth);
         preferencesManager.saveHealth(newHealth);
     }
 
-    public void decreaseHealth(int amount) {
-        Integer healthValue = Optional.ofNullable(health.getValue()).orElse(100);
-        int newHealth = Math.max(0, healthValue - amount);
+    public void decreaseHealth(float amount) {
+        Float healthValue = Optional.ofNullable(health.getValue()).orElse(100f);
+        float newHealth = Math.max(0, healthValue - amount);
         health.setValue(newHealth);
         preferencesManager.saveHealth(newHealth);
     }
