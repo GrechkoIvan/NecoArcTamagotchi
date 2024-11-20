@@ -44,16 +44,15 @@ public class StatsViewModel extends ViewModel {
         return hunger;
     }
 
-    public void increaseHunger(float amount) {
+    public void updateHunger(float amount) {
         Float hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100f);
-        float newHunger = Math.min(100, hungerValue + amount);
-        hunger.setValue(newHunger);
-        preferencesManager.saveHunger(newHunger);
-    }
+        float newHunger = hungerValue + amount;
+        if (newHunger < 0) {
+            newHunger = 0;
+        } else if (newHunger > 100) {
+            newHunger = 100;
+        }
 
-    public void decreaseHunger(float amount) {
-        Float hungerValue = Optional.ofNullable(hunger.getValue()).orElse(100f);
-        float newHunger = Math.max(0, hungerValue - amount);
         hunger.setValue(newHunger);
         preferencesManager.saveHunger(newHunger);
     }
@@ -62,16 +61,15 @@ public class StatsViewModel extends ViewModel {
         return happiness;
     }
 
-    public void increaseHappiness(float amount) {
+    public void updateHappiness(float amount) {
         Float happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100f);
-        float newHappiness = Math.min(100, happinessValue + amount);
-        happiness.setValue(newHappiness);
-        preferencesManager.saveHappiness(newHappiness);
-    }
+        float newHappiness = happinessValue + amount;
+        if (newHappiness < 0) {
+            newHappiness = 0;
+        } else if (newHappiness > 100) {
+            newHappiness = 100;
+        }
 
-    public void decreaseHappiness(float amount) {
-        Float happinessValue = Optional.ofNullable(happiness.getValue()).orElse(100f);
-        float newHappiness = Math.max(0, happinessValue - amount);
         happiness.setValue(newHappiness);
         preferencesManager.saveHappiness(newHappiness);
     }
@@ -80,16 +78,15 @@ public class StatsViewModel extends ViewModel {
         return energy;
     }
 
-    public void increaseEnergy(float amount) {
+    public void updateEnergy(float amount) {
         Float energyValue = Optional.ofNullable(energy.getValue()).orElse(100f);
-        float newEnergy = Math.min(100, energyValue + amount);
-        energy.setValue(newEnergy);
-        preferencesManager.saveEnergy(newEnergy);
-    }
+        float newEnergy = energyValue + amount;
+        if (newEnergy < 0) {
+            newEnergy = 0;
+        } else if (newEnergy > 100) {
+            newEnergy = 100;
+        }
 
-    public void decreaseEnergy(float amount) {
-        Float energyValue = Optional.ofNullable(energy.getValue()).orElse(100f);
-        float newEnergy = Math.max(0, energyValue - amount);
         energy.setValue(newEnergy);
         preferencesManager.saveEnergy(newEnergy);
     }
@@ -98,16 +95,15 @@ public class StatsViewModel extends ViewModel {
         return health;
     }
 
-    public void increaseHealth(float amount) {
+    public void updateHealth(float amount) {
         Float healthValue = Optional.ofNullable(health.getValue()).orElse(100f);
-        float newHealth = Math.min(100, healthValue + amount);
-        health.setValue(newHealth);
-        preferencesManager.saveHealth(newHealth);
-    }
+        float newHealth = healthValue + amount;
+        if (newHealth < 0) {
+            newHealth = 0;
+        } else if (newHealth > 100) {
+            newHealth = 100;
+        }
 
-    public void decreaseHealth(float amount) {
-        Float healthValue = Optional.ofNullable(health.getValue()).orElse(100f);
-        float newHealth = Math.max(0, healthValue - amount);
         health.setValue(newHealth);
         preferencesManager.saveHealth(newHealth);
     }
