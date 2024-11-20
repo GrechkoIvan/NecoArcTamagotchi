@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="fragment_color">#bc947c</color>
+    <color name="fragment_background_color">#EFCCBB</color>
+    <color name="fragment_border_color">#D0A277</color>
     <color name="color_primary">#ecc2a1</color>
     <color name="navigation_icon_color">#6a295d</color>
     <color name="stat_icon_color">#6a295d</color>
