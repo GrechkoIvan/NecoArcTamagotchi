@@ -3,12 +3,17 @@ package com.example.necoarctamagotchi.data.preferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class SharedPreferencesManager {
     private static final String PREFS_NAME = "GamePrefs";
     private final SharedPreferences sharedPreferences;
 
-    public SharedPreferencesManager(Context context) {
-        sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    @Inject
+    public SharedPreferencesManager(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
     }
 
     public void saveHunger(float hunger) {

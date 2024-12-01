@@ -5,34 +5,35 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.necoarctamagotchi.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.data.dto.DishDto;
+import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.ui.fragments.BedroomFragment;
 import com.example.necoarctamagotchi.ui.fragments.EntertaimentsFragment;
 import com.example.necoarctamagotchi.ui.fragments.KitchenFragment;
 import com.example.necoarctamagotchi.ui.fragments.MedicineFragment;
-import com.example.necoarctamagotchi.ui.viewmodels.StatsViewModel;
+import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Optional;
+import dagger.hilt.android.AndroidEntryPoint;
 
-public class MainActivity extends AppCompatActivity {
-    private StatsViewModel statsViewModel;
+@AndroidEntryPoint
+public class MainActivity extends AppCompatActivity{
+    private MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        statsViewModel = new StatsViewModel(this);
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        statsViewModel.getUpdateSignal().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(Void aVoid) {
-                updateStatsProgressBars();
+        mainViewModel.getStatsLiveData().observe(this, stats -> {
+            if (stats != null) {
+                updateStatsProgressBars(stats);
             }
         });
 
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             if (currentFragment != null) {
-                getSupportFragmentManager().beginTransaction()
+                getSupportFragmentManager()
+                        .beginTransaction()
                         .remove(currentFragment)
                         .commit();
             }
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     };
 
-    private void updateStatsProgressBars() {
+    private void updateStatsProgressBars(StatsDto stats) {
         ProgressBar hungerBar = findViewById(R.id.hunger_progress);
         ProgressBar happinessBar = findViewById(R.id.happiness_progress);
         ProgressBar healthBar = findViewById(R.id.health_progress);
@@ -75,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
         ProgressColorManager progressColorManager = new ProgressColorManager();
 
-        float hunger = Optional.ofNullable(statsViewModel.getHunger().getValue()).orElse(100f);
-        float happiness = Optional.ofNullable(statsViewModel.getHappiness().getValue()).orElse(100f);
-        float energy = Optional.ofNullable(statsViewModel.getEnergy().getValue()).orElse(100f);
-        float health = Optional.ofNullable(statsViewModel.getHealth().getValue()).orElse(100f);
+        float hunger = stats.getHunger();
+        float happiness = stats.getHappiness();
+        float energy = stats.getEnergy();
+        float health = stats.getHealth();
 
         hungerBar.setProgress(Math.round(hunger));
         progressColorManager.updateProgressColor(hungerBar, Math.round(hunger));
