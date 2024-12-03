@@ -5,8 +5,11 @@
     <string name="title_entertainments">Веселье</string>
     <string name="title_medicine">Лекарства</string>
     <string name="title_bedroom">Спальня</string>
-    <string name="hunger_desc">hunger stat</string>
-    <string name="happiness_desc">happiness stat</string>
-    <string name="health_desc">health stat</string>
-    <string name="energy_desc">energy stat</string>
+    <string name="button_feed_text">Покормить</string>
+    <string name="hunger_desc">Уровень голода</string>
+    <string name="happiness_desc">Уровень счастья</string>
+    <string name="health_desc">Уровень здоровья</string>
+    <string name="energy_desc">Уровень энергии</string>
+    <string name="scroll_button_prev_desc">Переход к предыдущему блюду</string>
+    <string name="scroll_button_next_desc">Переход к следующему блюду</string>
 </resources>

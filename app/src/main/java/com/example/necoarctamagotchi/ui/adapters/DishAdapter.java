@@ -1,0 +1,65 @@
+package com.example.necoarctamagotchi.ui.adapters;
+
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.data.dto.DishDto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder>{
+    private List<DishDto> dishes;
+
+    public DishAdapter(List<DishDto> dishes) {
+        this.dishes = dishes;
+    }
+
+    @NonNull
+    @Override
+    public DishAdapter.DishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dish, parent, false);
+        return new DishViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull DishAdapter.DishViewHolder holder, int position) {
+        DishDto dish = dishes.get(position);
+        holder.bind(dish);
+
+        float scale = 1 - (Math.abs(position - holder.getAdapterPosition()) * 0.1f);
+        holder.itemView.setScaleX(scale);
+        holder.itemView.setScaleY(scale);
+        holder.itemView.setAlpha(scale);
+    }
+
+    @Override
+    public int getItemCount() {
+        return dishes.size();
+    }
+
+    public void updateDishes(List<DishDto> newDishes) {
+        this.dishes = newDishes;
+        notifyDataSetChanged();
+    }
+
+    static class DishViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView dishImage;
+
+        public DishViewHolder(View itemView) {
+            super(itemView);
+            dishImage = itemView.findViewById(R.id.dish_image);
+        }
+
+        public void bind(DishDto dish) {
+            dishImage.setImageResource(dish.getImageResId());
+        }
+    }
+}

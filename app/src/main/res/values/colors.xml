@@ -11,4 +11,15 @@
     <color name="progress_border_color">#6a295d</color>
     <color name="stats_panel_color">#EDC8B2</color>
     <color name="stats_panel_border_color">#D0A277</color>
+    <color name="scroll_button_arrow_color">#EFDACC</color>
+    <color name="scroll_button_default_background_color">#B48273</color>
+    <color name="scroll_button_default_border_color">#896057</color>
+    <color name="scroll_button_pressed_background_color">#BF8D7E</color>
+    <color name="scroll_button_pressed_border_color">#A07368</color>
+    <color name="feed_button_default_background_color">#B48273</color>
+    <color name="feed_button_default_border_color">#896057</color>
+    <color name="feed_button_pressed_background_color">#BF8D7E</color>
+    <color name="feed_button_pressed_border_color">#A07368</color>
+    <color name="feed_button_text_color">#F8F0EB</color>
+
 </resources>
