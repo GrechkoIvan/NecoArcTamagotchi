@@ -69,4 +69,15 @@ public class StatsModel {
         sharedPreferencesManager.saveEnergy(energy);
         sharedPreferencesManager.saveHealth(health);
     }
+
+    public void decreaseStatsTick() {
+        StatsDto currentStats = statsLiveData.getValue();
+        StatsDto newStats = new StatsDto(
+                currentStats.getHunger() - 0.138f,
+                currentStats.getHappiness() - 0.114f,
+                currentStats.getEnergy()- 0.096f,
+                currentStats.getHealth() - 0.06f
+        );
+        updateStats(newStats);
+    }
 }

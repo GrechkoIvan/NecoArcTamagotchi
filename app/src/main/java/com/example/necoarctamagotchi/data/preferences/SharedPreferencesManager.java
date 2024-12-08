@@ -1,6 +1,5 @@
 package com.example.necoarctamagotchi.data.preferences;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import javax.inject.Inject;
@@ -8,7 +7,6 @@ import javax.inject.Singleton;
 
 @Singleton
 public class SharedPreferencesManager {
-    private static final String PREFS_NAME = "GamePrefs";
     private final SharedPreferences sharedPreferences;
 
     @Inject
@@ -53,6 +51,14 @@ public class SharedPreferencesManager {
     }
 
     public int getTickSpeed() {
-        return sharedPreferences.getInt("tickSpeed", 5000);
+        return sharedPreferences.getInt("tickSpeed", 60000);
+    }
+
+    public void saveLastClosedTime(long millis) {
+        sharedPreferences.edit().putLong("lastClosedTime", millis).apply();
+    }
+
+    public long getLastClosedTime() {
+        return sharedPreferences.getLong("lastClosedTime", 0);
     }
 }

@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.necoarctamagotchi.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
-import com.example.necoarctamagotchi.data.dto.DishDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.ui.fragments.BedroomFragment;
 import com.example.necoarctamagotchi.ui.fragments.EntertaimentsFragment;
@@ -39,6 +38,16 @@ public class MainActivity extends AppCompatActivity{
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
+
+        mainViewModel.stopBackgroundStatsUpdating();
+        mainViewModel.startRealTimeStatsUpdating();
+    }
+
+    @Override
+    protected void onStop() {
+        mainViewModel.stopRealTimeStatsUpdating();
+        mainViewModel.startBackgroundStatsUpdating();
+        super.onStop();
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
