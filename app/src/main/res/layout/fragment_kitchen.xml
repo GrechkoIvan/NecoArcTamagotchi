@@ -18,7 +18,7 @@
         android:id="@+id/feed_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_feed_button"
+        android:background="@drawable/bg_action_button"
         style="@style/Widget.AppCompat.Button.Borderless"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -26,14 +26,14 @@
         android:text="@string/button_feed_text"
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:textColor="@color/feed_button_text_color"
+        android:textColor="@color/action_button_text_color"
         android:padding="10sp"
         android:elevation="0dp"
         android:layout_margin="10dp"
         android:contentDescription="@string/button_feed_text"/>
 
     <ImageButton
-        android:id="@+id/scroll_button_previous"
+        android:id="@+id/feed_scroll_button_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -43,11 +43,11 @@
         app:layout_constraintLeft_toLeftOf="@id/dish_slider"
         app:layout_constraintTop_toTopOf="@id/dish_slider"
         app:layout_constraintBottom_toBottomOf="@id/dish_slider"
-        android:contentDescription="@string/scroll_button_prev_desc"
+        android:contentDescription="@string/scroll_feed_button_prev_desc"
         android:scaleX="-1" />
 
     <ImageButton
-        android:id="@+id/scroll_button_next"
+        android:id="@+id/feed_scroll_button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -58,6 +58,6 @@
         app:layout_constraintRight_toRightOf="@id/dish_slider"
         app:layout_constraintTop_toTopOf="@id/dish_slider"
         app:layout_constraintBottom_toBottomOf="@id/dish_slider"
-        android:contentDescription="@string/scroll_button_next_desc" />
+        android:contentDescription="@string/scroll_feed_button_next_desc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,8 +42,8 @@ public class KitchenFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_kitchen, container, false);
 
-        buttonNext = view.findViewById(R.id.scroll_button_next);
-        buttonPrevious = view.findViewById(R.id.scroll_button_previous);
+        buttonNext = view.findViewById(R.id.feed_scroll_button_next);
+        buttonPrevious = view.findViewById(R.id.feed_scroll_button_previous);
 
         ViewPager2 viewPager = view.findViewById(R.id.dish_slider);
         dishAdapter = new DishAdapter(new ArrayList<>());

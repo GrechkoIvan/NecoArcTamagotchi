@@ -16,10 +16,11 @@
     <color name="scroll_button_default_border_color">#896057</color>
     <color name="scroll_button_pressed_background_color">#BF8D7E</color>
     <color name="scroll_button_pressed_border_color">#A07368</color>
-    <color name="feed_button_default_background_color">#B48273</color>
-    <color name="feed_button_default_border_color">#896057</color>
-    <color name="feed_button_pressed_background_color">#BF8D7E</color>
-    <color name="feed_button_pressed_border_color">#A07368</color>
-    <color name="feed_button_text_color">#F8F0EB</color>
+
+    <color name="action_button_default_background_color">#B48273</color>
+    <color name="action_button_default_border_color">#896057</color>
+    <color name="action_button_pressed_background_color">#BF8D7E</color>
+    <color name="action_button_pressed_border_color">#A07368</color>
+    <color name="action_button_text_color">#F8F0EB</color>
 
 </resources>

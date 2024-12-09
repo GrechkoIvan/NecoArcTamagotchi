@@ -33,11 +33,6 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
     public void onBindViewHolder(@NonNull DishAdapter.DishViewHolder holder, int position) {
         DishDto dish = dishes.get(position);
         holder.bind(dish);
-
-        float scale = 1 - (Math.abs(position - holder.getAdapterPosition()) * 0.1f);
-        holder.itemView.setScaleX(scale);
-        holder.itemView.setScaleY(scale);
-        holder.itemView.setAlpha(scale);
     }
 
     @Override
