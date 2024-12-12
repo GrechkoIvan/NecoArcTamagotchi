@@ -11,13 +11,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
+import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class BedroomFragment extends Fragment {
 
-    private BedroomViewModel mViewModel;
+    private ImageView lamp;
 
     public static BedroomFragment newInstance() {
         return new BedroomFragment();
@@ -26,14 +31,25 @@ public class BedroomFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_bedroom, container, false);
+        View view = inflater.inflate(R.layout.fragment_bedroom, container, false);
+
+        lamp = view.findViewById(R.id.lamp_image);
+        BedroomViewModel bedroomViewModel = new ViewModelProvider(this).get(BedroomViewModel.class);
+
+        bedroomViewModel.getSleepingStateLiveData().observe(getViewLifecycleOwner(), this::updateLampState);
+
+        lamp.setOnClickListener(v -> {
+            bedroomViewModel.updateSleepingState(Boolean.FALSE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
+            updateLampState(Boolean.TRUE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
+        });
+        return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BedroomViewModel.class);
-        // TODO: Use the ViewModel
+    private void updateLampState(boolean isSleeping) {
+        if (!isSleeping) {
+            lamp.setImageResource(R.drawable.lamp_on);
+        } else {
+            lamp.setImageResource(R.drawable.lamp_off);
+        }
     }
-
 }

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.necoarctamagotchi.R;
-import com.example.necoarctamagotchi.data.dto.DishDto;
 import com.example.necoarctamagotchi.data.dto.MedicineDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.data.model.StatsModel;
@@ -53,5 +52,6 @@ public class MedicineViewModel extends ViewModel {
                 currentStats.getHealth() + healthEffect
         );
         statsModel.updateStats(newStats);
+        statsModel.updateSleepingState(false);
     }
 }

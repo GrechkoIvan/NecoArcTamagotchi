@@ -61,4 +61,12 @@ public class SharedPreferencesManager {
     public long getLastClosedTime() {
         return sharedPreferences.getLong("lastClosedTime", 0);
     }
+
+    public void saveSleepingState(boolean isSleeping) {
+        sharedPreferences.edit().putBoolean("isSleeping", isSleeping).apply();
+    }
+
+    public boolean getSleepingState() {
+        return sharedPreferences.getBoolean("isSleeping", false);
+    }
 }

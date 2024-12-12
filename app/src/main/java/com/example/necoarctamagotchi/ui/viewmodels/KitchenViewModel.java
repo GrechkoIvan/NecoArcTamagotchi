@@ -52,5 +52,6 @@ public class KitchenViewModel extends ViewModel {
                 currentStats.getHealth() + dishStatsEffect.getHealth()
         );
         statsModel.updateStats(newStats);
+        statsModel.updateSleepingState(false);
     }
 }

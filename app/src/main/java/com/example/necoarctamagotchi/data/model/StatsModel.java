@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 public class StatsModel {
     private final SharedPreferencesManager sharedPreferencesManager;
     private final MutableLiveData<StatsDto> statsLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> isSleepingLiveData = new MutableLiveData<>();
 
     @Inject
     public StatsModel(SharedPreferencesManager sharedPreferencesManager) {
@@ -26,6 +27,7 @@ public class StatsModel {
         float energy = sharedPreferencesManager.getEnergy();
         float health = sharedPreferencesManager.getHealth();
         statsLiveData.setValue(new StatsDto(hunger, happiness, energy, health));
+        isSleepingLiveData.setValue(sharedPreferencesManager.getSleepingState());
     }
 
     public LiveData<StatsDto> getStatsLiveData() {
@@ -70,12 +72,29 @@ public class StatsModel {
         sharedPreferencesManager.saveHealth(health);
     }
 
+    public LiveData<Boolean> getSleepingStateLiveData() {
+        return isSleepingLiveData;
+    }
+
+    public void updateSleepingState(boolean isSleeping) {
+        isSleepingLiveData.setValue(isSleeping);
+        sharedPreferencesManager.saveSleepingState(isSleeping);
+    }
+
     public void decreaseStatsTick() {
         StatsDto currentStats = statsLiveData.getValue();
+
+        float newEnergy = currentStats.getEnergy();
+        if (Boolean.TRUE.equals(isSleepingLiveData.getValue())) {
+            newEnergy += 0.188f;
+        } else {
+            newEnergy -= 0.096f;
+        }
+
         StatsDto newStats = new StatsDto(
                 currentStats.getHunger() - 0.138f,
                 currentStats.getHappiness() - 0.114f,
-                currentStats.getEnergy()- 0.096f,
+                newEnergy,
                 currentStats.getHealth() - 0.06f
         );
         updateStats(newStats);

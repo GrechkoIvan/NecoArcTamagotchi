@@ -16,4 +16,5 @@
     <string name="scroll_feed_button_next_desc">Переход к следующему блюду</string>
     <string name="scroll_medicine_button_prev_desc">Переход к предыдущему лекарству</string>
     <string name="scroll_medicine_button_next_desc">Переход к следующему лекарству</string>
+    <string name="lamp_desc">Настольная лампа-переключатель</string>
 </resources>
