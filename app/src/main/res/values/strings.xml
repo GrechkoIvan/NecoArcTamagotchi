@@ -20,4 +20,6 @@
     <string name="dance_button_desc">Танцевать</string>
     <string name="flip_button_desc">Сальто</string>
     <string name="pepsi_toy_button_desc">Кошачья игрушка с пепси</string>
+    <string name="background_desc">Фон</string>
+    <string name="neco_arc_image_desc">Неко арк</string>
 </resources>
