@@ -11,7 +11,7 @@ import com.example.necoarctamagotchi.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.ui.fragments.BedroomFragment;
-import com.example.necoarctamagotchi.ui.fragments.EntertaimentsFragment;
+import com.example.necoarctamagotchi.ui.fragments.EntertainmentsFragment;
 import com.example.necoarctamagotchi.ui.fragments.KitchenFragment;
 import com.example.necoarctamagotchi.ui.fragments.MedicineFragment;
 import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity{
         } else if (itemId == R.id.medicine) {
             selectedFragment = new MedicineFragment();
         } else if (itemId == R.id.entertainments) {
-            selectedFragment = new EntertaimentsFragment();
+            selectedFragment = new EntertainmentsFragment();
         }
 
         if (selectedFragment != null) {

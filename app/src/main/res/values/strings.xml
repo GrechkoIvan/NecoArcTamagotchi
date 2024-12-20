@@ -17,4 +17,7 @@
     <string name="scroll_medicine_button_prev_desc">Переход к предыдущему лекарству</string>
     <string name="scroll_medicine_button_next_desc">Переход к следующему лекарству</string>
     <string name="lamp_desc">Настольная лампа-переключатель</string>
+    <string name="dance_button_desc">Танцевать</string>
+    <string name="flip_button_desc">Сальто</string>
+    <string name="pepsi_toy_button_desc">Кошачья игрушка с пепси</string>
 </resources>
