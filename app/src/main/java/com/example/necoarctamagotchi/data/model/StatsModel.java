@@ -90,12 +90,19 @@ public class StatsModel {
         } else {
             newEnergy -= 0.096f;
         }
+        float newHunger = currentStats.getHunger() - 0.138f;
+        float newHappiness = currentStats.getHappiness() - 0.114f;
+
+        float newHealth = currentStats.getHealth();
+        if (newHunger < 0) {
+            newHealth -= 0.06f;
+        }
 
         StatsDto newStats = new StatsDto(
-                currentStats.getHunger() - 0.138f,
-                currentStats.getHappiness() - 0.114f,
+                newHunger,
+                newHappiness,
                 newEnergy,
-                currentStats.getHealth() - 0.06f
+                newHealth
         );
         updateStats(newStats);
     }
