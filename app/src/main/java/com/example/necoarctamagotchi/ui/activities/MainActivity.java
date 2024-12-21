@@ -1,6 +1,7 @@
 package com.example.necoarctamagotchi.ui.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,15 @@ public class MainActivity extends AppCompatActivity{
         mainViewModel.getStatsLiveData().observe(this, stats -> {
             if (stats != null) {
                 updateStatsProgressBars(stats);
+            }
+        });
+
+        View dimOverlay = findViewById(R.id.dim_overlay);
+        mainViewModel.getSleepingStateLiveData().observe(this, isSleeping -> {
+            if (isSleeping) {
+                dimOverlay.setVisibility(View.VISIBLE);
+            } else {
+                dimOverlay.setVisibility(View.GONE);
             }
         });
 

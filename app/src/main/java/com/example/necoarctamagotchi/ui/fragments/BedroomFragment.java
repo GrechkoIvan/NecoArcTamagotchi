@@ -47,9 +47,9 @@ public class BedroomFragment extends Fragment {
 
     private void updateLampState(boolean isSleeping) {
         if (!isSleeping) {
-            lamp.setImageResource(R.drawable.lamp_on);
+            lamp.setImageResource(R.drawable.ic_lamp_on);
         } else {
-            lamp.setImageResource(R.drawable.lamp_off);
+            lamp.setImageResource(R.drawable.ic_lamp_off);
         }
     }
 }

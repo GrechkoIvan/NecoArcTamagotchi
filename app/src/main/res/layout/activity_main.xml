@@ -30,6 +30,13 @@
         android:src="@drawable/neco_arc_sprite"
         android:contentDescription="@string/neco_arc_image_desc"/>
 
+    <View
+        android:id="@+id/dim_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/stats_panel"
         android:layout_width="wrap_content"

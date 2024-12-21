@@ -56,6 +56,10 @@ public class MainViewModel extends ViewModel {
         return statsLiveData;
     }
 
+    public LiveData<Boolean> getSleepingStateLiveData() {
+        return statsModel.getSleepingStateLiveData();
+    }
+
     public void startRealTimeStatsUpdating() {
         statsUpdateHandler.post(statsUpdateRunnable);
     }
