@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.necoarctamagotchi.ProgressColorManager;
+import com.example.necoarctamagotchi.utils.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.ui.fragments.BedroomFragment;

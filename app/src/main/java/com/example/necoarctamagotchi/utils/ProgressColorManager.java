@@ -1,7 +1,7 @@
 // Класс, назначающий цвет полосы ProgressBar
 // в зависимости от значения прогресса
 
-package com.example.necoarctamagotchi;
+package com.example.necoarctamagotchi.utils;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
