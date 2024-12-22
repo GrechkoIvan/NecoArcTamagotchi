@@ -2,6 +2,7 @@ package com.example.necoarctamagotchi.ui.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,12 +38,15 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        ImageView necoArc = findViewById(R.id.neco_arc);
         View dimOverlay = findViewById(R.id.dim_overlay);
         mainViewModel.getSleepingStateLiveData().observe(this, isSleeping -> {
             if (isSleeping) {
                 dimOverlay.setVisibility(View.VISIBLE);
+                necoArc.setImageResource(R.drawable.sprite_neco_arc_sleeping);
             } else {
                 dimOverlay.setVisibility(View.GONE);
+                necoArc.setImageResource(R.drawable.sprite_neco_arc_idle);
             }
         });
 
