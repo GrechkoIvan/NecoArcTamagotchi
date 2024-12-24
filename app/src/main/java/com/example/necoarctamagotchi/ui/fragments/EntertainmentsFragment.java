@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
@@ -42,15 +43,27 @@ public class EntertainmentsFragment extends Fragment {
 
 
         pepsiToyButton.setOnClickListener(v -> {
-            entertainmentsViewModel.playWithPepsiToy();
+            boolean action = entertainmentsViewModel.playWithPepsiToy();
+            if (!action) {
+                Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         danceButton.setOnClickListener(v -> {
-            entertainmentsViewModel.dance();
+            boolean action = entertainmentsViewModel.dance();
+            if (!action) {
+                Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         flipButton.setOnClickListener(v -> {
-            entertainmentsViewModel.doFlip();
+            boolean action = entertainmentsViewModel.doFlip();
+            if (!action) {
+                Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
         return view;
     }

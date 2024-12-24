@@ -7,6 +7,7 @@
     <string name="title_bedroom">Спальня</string>
     <string name="button_feed_text">Покормить</string>
     <string name="button_take_medicine_text">Принять лекарство</string>
+    <string name="toast_lack_of_energy_text">Недостаточно энергии</string>
 
     <string name="hunger_desc">Уровень голода</string>
     <string name="happiness_desc">Уровень счастья</string>
