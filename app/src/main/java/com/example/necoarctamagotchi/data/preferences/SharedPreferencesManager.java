@@ -2,6 +2,9 @@ package com.example.necoarctamagotchi.data.preferences;
 
 import android.content.SharedPreferences;
 
+import com.example.necoarctamagotchi.data.skins.DefaultSkin;
+import com.example.necoarctamagotchi.data.skins.Skin;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -68,5 +71,18 @@ public class SharedPreferencesManager {
 
     public boolean getSleepingState() {
         return sharedPreferences.getBoolean("isSleeping", false);
+    }
+
+    public void saveSkin(Skin skin) {
+        sharedPreferences.edit().putString("skin", skin.getClass().getSimpleName()).apply();
+    }
+
+    public Skin getSkin() {
+        String skinClassName = sharedPreferences.getString("skin", DefaultSkin.class.getSimpleName());
+        try {
+            return (Skin) Class.forName(skinClassName).newInstance();
+        } catch (Exception e) {
+            return new DefaultSkin();
+        }
     }
 }

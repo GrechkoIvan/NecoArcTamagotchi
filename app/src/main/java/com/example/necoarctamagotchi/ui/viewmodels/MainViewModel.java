@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+import com.example.necoarctamagotchi.data.dto.AnimationDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
+import com.example.necoarctamagotchi.data.model.CharacterAppearanceModel;
 import com.example.necoarctamagotchi.data.model.SettingsModel;
 import com.example.necoarctamagotchi.data.model.StatsModel;
 
@@ -19,6 +21,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class MainViewModel extends ViewModel {
     private final StatsModel statsModel;
     private final SettingsModel settingsModel;
+    private final CharacterAppearanceModel characterAppearanceModel;
     private final LiveData<StatsDto> statsLiveData;
     private final Handler statsUpdateHandler = new Handler(Looper.getMainLooper());
     private final Runnable statsUpdateRunnable;
@@ -26,9 +29,14 @@ public class MainViewModel extends ViewModel {
     private final Observer<Integer> tickSpeedObserver;
 
     @Inject
-    public MainViewModel(StatsModel statsModel, SettingsModel settingsModel) {
+    public MainViewModel(
+            StatsModel statsModel,
+            SettingsModel settingsModel,
+            CharacterAppearanceModel characterAppearanceModel) {
+
         this.settingsModel = settingsModel;
         this.statsModel = statsModel;
+        this.characterAppearanceModel = characterAppearanceModel;
 
         tickSpeedObserver = tickSpeed -> {
             this.tickSpeed = tickSpeed;
@@ -58,6 +66,10 @@ public class MainViewModel extends ViewModel {
 
     public LiveData<Boolean> getSleepingStateLiveData() {
         return statsModel.getSleepingStateLiveData();
+    }
+
+    public LiveData<AnimationDto> getAnimationLiveData() {
+        return characterAppearanceModel.getAnimationLiveData();
     }
 
     public void startRealTimeStatsUpdating() {

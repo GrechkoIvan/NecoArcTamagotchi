@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.necoarctamagotchi.utils.AnimationManager;
 import com.example.necoarctamagotchi.utils.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
@@ -24,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity{
     private MainViewModel mainViewModel;
+    private AnimationManager animationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,18 @@ public class MainActivity extends AppCompatActivity{
         mainViewModel.getSleepingStateLiveData().observe(this, isSleeping -> {
             if (isSleeping) {
                 dimOverlay.setVisibility(View.VISIBLE);
-                necoArc.setImageResource(R.drawable.sprite_neco_arc_sleeping);
             } else {
                 dimOverlay.setVisibility(View.GONE);
-                necoArc.setImageResource(R.drawable.sprite_neco_arc_idle);
             }
+        });
+
+        mainViewModel.getAnimationLiveData().observe(this, animation -> {
+            if (animationManager == null) {
+                animationManager = new AnimationManager(this, mainViewModel.getAnimationLiveData().getValue(), necoArc);
+            }
+            animationManager.stopAnimation();
+            animationManager.changeAnimation(animation);
+            animationManager.startAnimation();
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);

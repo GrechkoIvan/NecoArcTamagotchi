@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.MedicineDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
+import com.example.necoarctamagotchi.data.model.CharacterAppearanceModel;
 import com.example.necoarctamagotchi.data.model.StatsModel;
 
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class MedicineViewModel extends ViewModel {
     StatsModel statsModel;
+    CharacterAppearanceModel characterAppearanceModel;
     private final MutableLiveData<List<MedicineDto>> medicines = new MutableLiveData<>();
 
     @Inject
-    public MedicineViewModel(StatsModel statsModel) {
+    public MedicineViewModel(StatsModel statsModel, CharacterAppearanceModel characterAppearanceModel) {
         this.statsModel = statsModel;
+        this.characterAppearanceModel = characterAppearanceModel;
         loadMedicines();
     }
 
@@ -52,6 +55,7 @@ public class MedicineViewModel extends ViewModel {
                 currentStats.getHealth() + healthEffect
         );
         statsModel.updateStats(newStats);
+        characterAppearanceModel.playJoyAnimation();
         statsModel.updateSleepingState(false);
     }
 }

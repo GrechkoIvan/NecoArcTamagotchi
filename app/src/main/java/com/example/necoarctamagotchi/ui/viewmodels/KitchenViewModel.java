@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.DishDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
+import com.example.necoarctamagotchi.data.model.CharacterAppearanceModel;
 import com.example.necoarctamagotchi.data.model.StatsModel;
 
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class KitchenViewModel extends ViewModel {
     StatsModel statsModel;
+    CharacterAppearanceModel characterAppearanceModel;
     private final MutableLiveData<List<DishDto>> dishes = new MutableLiveData<>();
 
     @Inject
-    public KitchenViewModel(StatsModel statsModel) {
+    public KitchenViewModel(StatsModel statsModel, CharacterAppearanceModel characterAppearanceModel) {
         this.statsModel = statsModel;
+        this.characterAppearanceModel = characterAppearanceModel;
         loadDishes();
     }
 
@@ -53,6 +56,11 @@ public class KitchenViewModel extends ViewModel {
                 currentStats.getHealth() + dishStatsEffect.getHealth()
         );
         statsModel.updateStats(newStats);
+        if (dish.getStats().getHappiness() < 0) {
+            characterAppearanceModel.playAngerAnimaation();
+        } else {
+            characterAppearanceModel.playJoyAnimation();
+        }
         statsModel.updateSleepingState(false);
     }
 }
