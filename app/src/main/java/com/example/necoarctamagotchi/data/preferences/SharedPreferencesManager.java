@@ -85,4 +85,20 @@ public class SharedPreferencesManager {
             return new DefaultSkin();
         }
     }
+
+    public void saveMusicEnabledState(boolean isMusicEnabled) {
+        sharedPreferences.edit().putBoolean("isMusicEnabled", isMusicEnabled).apply();
+    }
+
+    public boolean getMusicEnabledState() {
+        return sharedPreferences.getBoolean("isMusicEnabled", true);
+    }
+
+    public void saveSfxEnabledState(boolean isMusicEnabled) {
+        sharedPreferences.edit().putBoolean("isSfxEnabled", isMusicEnabled).apply();
+    }
+
+    public boolean getSfxEnabledState() {
+        return sharedPreferences.getBoolean("isSfxEnabled", true);
+    }
 }

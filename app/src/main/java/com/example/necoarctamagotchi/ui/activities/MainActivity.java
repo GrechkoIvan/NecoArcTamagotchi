@@ -2,6 +2,7 @@ package com.example.necoarctamagotchi.ui.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -9,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.necoarctamagotchi.ui.dialogs.SettingsDialog;
 import com.example.necoarctamagotchi.utils.AnimationManager;
+import com.example.necoarctamagotchi.utils.BackgroundMusicManager;
 import com.example.necoarctamagotchi.utils.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
@@ -18,7 +21,10 @@ import com.example.necoarctamagotchi.ui.fragments.EntertainmentsFragment;
 import com.example.necoarctamagotchi.ui.fragments.KitchenFragment;
 import com.example.necoarctamagotchi.ui.fragments.MedicineFragment;
 import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
+import com.example.necoarctamagotchi.utils.SfxManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -26,6 +32,11 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainActivity extends AppCompatActivity{
     private MainViewModel mainViewModel;
     private AnimationManager animationManager;
+
+    @Inject
+    BackgroundMusicManager backgroundMusicManager;
+    @Inject
+    SfxManager sfxManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,18 +70,33 @@ public class MainActivity extends AppCompatActivity{
             animationManager.startAnimation();
         });
 
+        ImageButton settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
+            SettingsDialog settingsDialog = new SettingsDialog();
+            settingsDialog.show(getSupportFragmentManager(), "SettingsDialog");
+        });
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
 
         mainViewModel.stopBackgroundStatsUpdating();
         mainViewModel.startRealTimeStatsUpdating();
+        backgroundMusicManager.playMusic();
     }
 
     @Override
     protected void onStop() {
         mainViewModel.stopRealTimeStatsUpdating();
         mainViewModel.startBackgroundStatsUpdating();
+        backgroundMusicManager.stopMusic();
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sfxManager.release();
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
@@ -98,6 +124,7 @@ public class MainActivity extends AppCompatActivity{
                         .commit();
             }
         }
+        sfxManager.playButtonClickSound();
         return true;
     };
 

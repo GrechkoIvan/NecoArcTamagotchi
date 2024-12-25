@@ -21,14 +21,20 @@ import com.example.necoarctamagotchi.ui.adapters.DishAdapter;
 import com.example.necoarctamagotchi.ui.adapters.MedicineAdapter;
 import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.MedicineViewModel;
+import com.example.necoarctamagotchi.utils.SfxManager;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import dagger.hilt.EntryPoint;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class MedicineFragment extends Fragment {
+
+    @Inject
+    SfxManager sfxManager;
 
     private MedicineViewModel mViewModel;
 
@@ -68,6 +74,7 @@ public class MedicineFragment extends Fragment {
         });
 
         buttonPrevious.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             int currentItem = viewPager.getCurrentItem();
             if (currentItem > 0) {
                 viewPager.setCurrentItem(currentItem - 1);
@@ -75,6 +82,7 @@ public class MedicineFragment extends Fragment {
         });
 
         buttonNext.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             int currentItem = viewPager.getCurrentItem();
             if (currentItem < medicineAdapter.getItemCount() - 1) {
                 viewPager.setCurrentItem(currentItem + 1);
@@ -83,6 +91,8 @@ public class MedicineFragment extends Fragment {
 
         Button takeMedicineButton = view.findViewById(R.id.take_medicine_button);
         takeMedicineButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
+            sfxManager.playJoyVoice();
             int currentItemPosition = viewPager.getCurrentItem();
             medicineViewModel.takeMedicine(currentItemPosition);
         });

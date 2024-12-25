@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,11 @@ import com.example.necoarctamagotchi.ui.adapters.ArcPageTransformer;
 import com.example.necoarctamagotchi.ui.adapters.DishAdapter;
 import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
+import com.example.necoarctamagotchi.utils.SfxManager;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import dagger.hilt.EntryPoint;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -29,9 +33,14 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class KitchenFragment extends Fragment {
 
+    @Inject
+    SfxManager sfxManager;
+
     DishAdapter dishAdapter;
     ImageButton buttonNext;
     ImageButton buttonPrevious;
+
+    Handler handler = new Handler();
 
     public static KitchenFragment newInstance() {
         return new KitchenFragment();
@@ -65,6 +74,7 @@ public class KitchenFragment extends Fragment {
         });
 
         buttonPrevious.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             int currentItem = viewPager.getCurrentItem();
             if (currentItem > 0) {
                 viewPager.setCurrentItem(currentItem - 1);
@@ -72,6 +82,7 @@ public class KitchenFragment extends Fragment {
         });
 
         buttonNext.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             int currentItem = viewPager.getCurrentItem();
             if (currentItem < dishAdapter.getItemCount() - 1) {
                 viewPager.setCurrentItem(currentItem + 1);
@@ -80,8 +91,15 @@ public class KitchenFragment extends Fragment {
 
         Button feedButton = view.findViewById(R.id.feed_button);
         feedButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             int currentItemPosition = viewPager.getCurrentItem();
-            kitchenViewModel.feedDish(currentItemPosition);
+            DishDto dish = kitchenViewModel.getDishes().getValue().get(currentItemPosition);
+            if (dish.getStats().getHappiness() < 0) {
+                sfxManager.playAngerVoice();
+            } else {
+                sfxManager.playJoyVoice();
+            }
+            kitchenViewModel.feedDish(dish);
         });
 
         updateButtonVisibility(0);

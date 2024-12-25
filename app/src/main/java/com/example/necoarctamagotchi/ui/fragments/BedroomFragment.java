@@ -16,11 +16,17 @@ import android.widget.ImageView;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
+import com.example.necoarctamagotchi.utils.SfxManager;
+
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class BedroomFragment extends Fragment {
+
+    @Inject
+    SfxManager sfxManager;
 
     private ImageView lamp;
 
@@ -39,6 +45,7 @@ public class BedroomFragment extends Fragment {
         bedroomViewModel.getSleepingStateLiveData().observe(getViewLifecycleOwner(), this::updateLampState);
 
         lamp.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             bedroomViewModel.updateSleepingState(Boolean.FALSE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
             updateLampState(Boolean.TRUE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
         });
@@ -50,6 +57,7 @@ public class BedroomFragment extends Fragment {
             lamp.setImageResource(R.drawable.ic_lamp_on);
         } else {
             lamp.setImageResource(R.drawable.ic_lamp_off);
+            sfxManager.playSleepVoice();
         }
     }
 }

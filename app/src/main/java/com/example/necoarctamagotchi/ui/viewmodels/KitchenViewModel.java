@@ -45,8 +45,7 @@ public class KitchenViewModel extends ViewModel {
         return dishes;
     }
 
-    public void feedDish(int position) {
-        DishDto dish = dishes.getValue().get(position);
+    public void feedDish(DishDto dish) {
         StatsDto dishStatsEffect = dish.getStats();
         StatsDto currentStats = statsModel.getStatsLiveData().getValue();
         StatsDto newStats = new StatsDto(

@@ -17,11 +17,17 @@ import android.widget.Toast;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.EntertainmentsViewModel;
+import com.example.necoarctamagotchi.utils.SfxManager;
+
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class EntertainmentsFragment extends Fragment {
+
+    @Inject
+    SfxManager sfxManager;
 
     private EntertainmentsViewModel mViewModel;
 
@@ -43,26 +49,35 @@ public class EntertainmentsFragment extends Fragment {
 
 
         pepsiToyButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             boolean action = entertainmentsViewModel.playWithPepsiToy();
             if (!action) {
                 Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
                 toast.show();
+            } else {
+                sfxManager.playPepsiToyVoice();
             }
         });
 
         danceButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             boolean action = entertainmentsViewModel.dance();
             if (!action) {
                 Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
                 toast.show();
+            } else {
+                sfxManager.playDanceVoice();
             }
         });
 
         flipButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
             boolean action = entertainmentsViewModel.doFlip();
             if (!action) {
                 Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_energy_text,Toast.LENGTH_SHORT);
                 toast.show();
+            } else {
+                sfxManager.playFlipVoice();
             }
         });
         return view;

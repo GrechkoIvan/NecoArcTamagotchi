@@ -8,6 +8,9 @@
     <string name="button_feed_text">Покормить</string>
     <string name="button_take_medicine_text">Принять лекарство</string>
     <string name="toast_lack_of_energy_text">Недостаточно энергии</string>
+    <string name="settings_dialog_text">Настройки</string>
+    <string name="music_settings_switch_text">Музыка</string>
+    <string name="sfx_settings_switch_text">Звуковые эффекты</string>
 
     <string name="hunger_desc">Уровень голода</string>
     <string name="happiness_desc">Уровень счастья</string>
@@ -23,4 +26,6 @@
     <string name="pepsi_toy_button_desc">Кошачья игрушка с пепси</string>
     <string name="background_desc">Фон</string>
     <string name="neco_arc_image_desc">Неко арк</string>
+    <string name="settings_button_desc">Настройки</string>
+    <string name="settings_close_button_desc">Закрыть настройки</string>
 </resources>

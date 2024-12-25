@@ -16,6 +16,8 @@
     <color name="scroll_button_default_border_color">#896057</color>
     <color name="scroll_button_pressed_background_color">#BF8D7E</color>
     <color name="scroll_button_pressed_border_color">#A07368</color>
+    <color name="settings_dialog_border_color">#AB8360</color>
+    <color name="settings_panel_color">#BF997C</color>
 
     <color name="action_button_default_background_color">#B48273</color>
     <color name="action_button_default_border_color">#896057</color>
