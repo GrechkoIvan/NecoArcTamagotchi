@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class EntertainmentsFragment extends Fragment {
     SfxManager sfxManager;
 
     private EntertainmentsViewModel mViewModel;
+    Handler handler = new Handler();
 
     public static EntertainmentsFragment newInstance() {
         return new EntertainmentsFragment();
@@ -56,6 +58,18 @@ public class EntertainmentsFragment extends Fragment {
                 toast.show();
             } else {
                 sfxManager.playPepsiToyVoice();
+
+                pepsiToyButton.setEnabled(false);
+                danceButton.setEnabled(false);
+                flipButton.setEnabled(false);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pepsiToyButton.setEnabled(true);
+                        danceButton.setEnabled(true);
+                        flipButton.setEnabled(true);
+                    }
+                }, 3200);
             }
         });
 
@@ -67,6 +81,18 @@ public class EntertainmentsFragment extends Fragment {
                 toast.show();
             } else {
                 sfxManager.playDanceVoice();
+
+                pepsiToyButton.setEnabled(false);
+                danceButton.setEnabled(false);
+                flipButton.setEnabled(false);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pepsiToyButton.setEnabled(true);
+                        danceButton.setEnabled(true);
+                        flipButton.setEnabled(true);
+                    }
+                }, 4500);
             }
         });
 
@@ -78,6 +104,18 @@ public class EntertainmentsFragment extends Fragment {
                 toast.show();
             } else {
                 sfxManager.playFlipVoice();
+
+                pepsiToyButton.setEnabled(false);
+                danceButton.setEnabled(false);
+                flipButton.setEnabled(false);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pepsiToyButton.setEnabled(true);
+                        danceButton.setEnabled(true);
+                        flipButton.setEnabled(true);
+                    }
+                }, 900);
             }
         });
         return view;

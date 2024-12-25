@@ -39,7 +39,6 @@ public class KitchenFragment extends Fragment {
     DishAdapter dishAdapter;
     ImageButton buttonNext;
     ImageButton buttonPrevious;
-
     Handler handler = new Handler();
 
     public static KitchenFragment newInstance() {
@@ -100,6 +99,8 @@ public class KitchenFragment extends Fragment {
                 sfxManager.playJoyVoice();
             }
             kitchenViewModel.feedDish(dish);
+            feedButton.setEnabled(false);
+            handler.postDelayed(() -> feedButton.setEnabled(true), 1000);
         });
 
         updateButtonVisibility(0);

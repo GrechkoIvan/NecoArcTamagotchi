@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class BedroomFragment extends Fragment {
     SfxManager sfxManager;
 
     private ImageView lamp;
+    Handler handler = new Handler();
 
     public static BedroomFragment newInstance() {
         return new BedroomFragment();
@@ -48,6 +50,9 @@ public class BedroomFragment extends Fragment {
             sfxManager.playButtonClickSound();
             bedroomViewModel.updateSleepingState(Boolean.FALSE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
             updateLampState(Boolean.TRUE.equals(bedroomViewModel.getSleepingStateLiveData().getValue()));
+
+            lamp.setEnabled(false);
+            handler.postDelayed(() -> lamp.setEnabled(true), 500);
         });
         return view;
     }

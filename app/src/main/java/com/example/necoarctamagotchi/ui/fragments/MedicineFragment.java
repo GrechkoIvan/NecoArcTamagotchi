@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class MedicineFragment extends Fragment {
     SfxManager sfxManager;
 
     private MedicineViewModel mViewModel;
+    Handler handler = new Handler();
 
     MedicineAdapter medicineAdapter;
     ImageButton buttonNext;
@@ -95,6 +97,8 @@ public class MedicineFragment extends Fragment {
             sfxManager.playJoyVoice();
             int currentItemPosition = viewPager.getCurrentItem();
             medicineViewModel.takeMedicine(currentItemPosition);
+            takeMedicineButton.setEnabled(false);
+            handler.postDelayed(() -> takeMedicineButton.setEnabled(true), 1000);
         });
 
         updateButtonVisibility(0);
