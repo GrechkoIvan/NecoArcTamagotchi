@@ -32,9 +32,9 @@ public class KitchenViewModel extends ViewModel {
 
     private void loadDishes() {
         List<DishDto> dishList = new ArrayList<>();
-        dishList.add(new DishDto(R.drawable.dish_burger, new StatsDto(20, 10, 0, 0)));
+        dishList.add(new DishDto(R.drawable.dish_burger, new StatsDto(20, 10, 0, -7)));
         dishList.add(new DishDto(R.drawable.dish_salad, new StatsDto(7, -5, 0, 2)));
-        dishList.add(new DishDto(R.drawable.dish_pepsi, new StatsDto(0, 15, 3, 0)));
+        dishList.add(new DishDto(R.drawable.dish_pepsi, new StatsDto(0, 15, 5, -3)));
         dishList.add(new DishDto(R.drawable.dish_cookies, new StatsDto(5, 5, 0, 0)));
         dishList.add(new DishDto(R.drawable.dish_fish_bones, new StatsDto(5, -10, 0, 0)));
 
