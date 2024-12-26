@@ -13,6 +13,10 @@
     <string name="sfx_settings_switch_text">Звуковые эффекты</string>
     <string name="notification_title">Тамагочи</string>
     <string name="notification_message">Неко Арк нуждается в вашем внимании!</string>
+    <string name="permission_dialog_title">Необходимы разрешения</string>
+    <string name="permission_dialog_message">Это приложение требует разрешение на установку точных будильников. Пожалуйста, предоставьте его в настройках.</string>
+    <string name="permission_dialog_positive_button_text">Перейти в настройки</string>
+    <string name="permission_dialog_negative_button_text">Отмена</string>
 
     <string name="hunger_desc">Уровень голода</string>
     <string name="happiness_desc">Уровень счастья</string>

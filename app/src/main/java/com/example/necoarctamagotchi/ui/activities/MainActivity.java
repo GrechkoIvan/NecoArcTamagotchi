@@ -1,18 +1,31 @@
 package com.example.necoarctamagotchi.ui.activities;
 
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.Manifest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.necoarctamagotchi.ui.dialogs.SettingsDialog;
 import com.example.necoarctamagotchi.utils.AnimationManager;
 import com.example.necoarctamagotchi.utils.BackgroundMusicManager;
+import com.example.necoarctamagotchi.utils.MoneyCountTextFormatter;
 import com.example.necoarctamagotchi.utils.ProgressColorManager;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
@@ -70,6 +83,11 @@ public class MainActivity extends AppCompatActivity{
             animationManager.startAnimation();
         });
 
+        TextView moneyCountText = findViewById(R.id.money_count_text);
+        mainViewModel.getMoneyCountLiveData().observe(this, moneyCount -> {
+            moneyCountText.setText(MoneyCountTextFormatter.formatMoneyText(moneyCount));
+        });
+
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(v -> {
             sfxManager.playButtonClickSound();
@@ -79,6 +97,8 @@ public class MainActivity extends AppCompatActivity{
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
+
+        checkNotificationPermission();
 
         mainViewModel.stopBackgroundStatsUpdating();
         mainViewModel.startRealTimeStatsUpdating();
@@ -94,6 +114,15 @@ public class MainActivity extends AppCompatActivity{
         sfxManager.release();
         mainViewModel.scheduleNotification(this);
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        mainViewModel.stopBackgroundStatsUpdating();
+        mainViewModel.startRealTimeStatsUpdating();
+        mainViewModel.cancelNotification(this);
+        backgroundMusicManager.playMusic();
+        super.onResume();
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
@@ -146,5 +175,34 @@ public class MainActivity extends AppCompatActivity{
         progressColorManager.updateProgressColor(energyBar, Math.round(energy));
         healthBar.setProgress(Math.round(health));
         progressColorManager.updateProgressColor(healthBar, Math.round(health));
+    }
+
+    private void checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        1);
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            if (!alarmManager.canScheduleExactAlarms()) {
+                new AlertDialog.Builder(this)
+                        .setTitle(getResources().getString(R.string.permission_dialog_title))
+                        .setMessage(getResources().getString(R.string.permission_dialog_message))
+                        .setPositiveButton(getResources().getString(R.string.permission_dialog_positive_button_text), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton(getResources().getString(R.string.permission_dialog_negative_button_text), null)
+                        .show();
+            }
+        }
     }
 }
