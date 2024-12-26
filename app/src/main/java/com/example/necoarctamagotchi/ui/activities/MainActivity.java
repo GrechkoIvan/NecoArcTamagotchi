@@ -37,6 +37,8 @@ import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
 import com.example.necoarctamagotchi.utils.SfxManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Objects;
+
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onStop() {
         mainViewModel.stopRealTimeStatsUpdating();
         mainViewModel.startBackgroundStatsUpdating();
-        backgroundMusicManager.stopMusic();
+        backgroundMusicManager.pauseMusic();
         sfxManager.release();
         mainViewModel.scheduleNotification(this);
         super.onStop();
@@ -123,6 +125,12 @@ public class MainActivity extends AppCompatActivity{
         mainViewModel.cancelNotification(this);
         backgroundMusicManager.playMusic();
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        backgroundMusicManager.stopMusic();
+        super.onDestroy();
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {

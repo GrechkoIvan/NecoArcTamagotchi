@@ -24,11 +24,20 @@ public class BackgroundMusicManager {
     }
 
     public void playMusic() {
-        if (settingsModel.getMusicEnabledStateLiveData().getValue() && mediaPlayer == null) {
+        if (settingsModel.getMusicEnabledStateLiveData().getValue() && mediaPlayer != null) {
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+            }
+        } else {
             mediaPlayer = MediaPlayer.create(context, R.raw.background_music);
             mediaPlayer.setLooping(true);
             mediaPlayer.setVolume(0.3f, 0.3f);
-            mediaPlayer.start();
+        }
+    }
+
+    public void pauseMusic() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
         }
     }
 
@@ -44,7 +53,7 @@ public class BackgroundMusicManager {
         if (settingsModel.getMusicEnabledStateLiveData().getValue()) {
             playMusic();
         } else {
-            stopMusic();
+            pauseMusic();
         }
     }
 }

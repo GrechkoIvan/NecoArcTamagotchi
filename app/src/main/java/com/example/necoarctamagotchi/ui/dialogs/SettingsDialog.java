@@ -76,7 +76,6 @@ public class SettingsDialog extends DialogFragment {
         sfxSwitch.setOnCheckedChangeListener((v, isChecked) -> {
             settingsModel.updateSfxEnabledState(isChecked);
             sfxManager.playButtonClickSound();
-            backgroundMusicManager.updateMusicState();
         });
 
         ImageButton closeButton = view.findViewById(R.id.close_button);
