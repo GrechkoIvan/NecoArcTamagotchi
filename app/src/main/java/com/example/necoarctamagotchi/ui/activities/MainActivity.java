@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
 
         mainViewModel.stopBackgroundStatsUpdating();
         mainViewModel.startRealTimeStatsUpdating();
+        mainViewModel.cancelNotification(this);
         backgroundMusicManager.playMusic();
     }
 
@@ -90,13 +91,9 @@ public class MainActivity extends AppCompatActivity{
         mainViewModel.stopRealTimeStatsUpdating();
         mainViewModel.startBackgroundStatsUpdating();
         backgroundMusicManager.stopMusic();
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
         sfxManager.release();
+        mainViewModel.scheduleNotification(this);
+        super.onStop();
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {

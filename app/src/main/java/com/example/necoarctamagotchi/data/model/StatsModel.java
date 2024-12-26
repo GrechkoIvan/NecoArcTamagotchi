@@ -15,6 +15,13 @@ public class StatsModel {
     private final MutableLiveData<StatsDto> statsLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> isSleepingLiveData = new MutableLiveData<>();
 
+    public static final float HUNGER_EFFECT = -0.117f;
+    public static final float HAPPINESS_EFFECT = -0.133f;
+    public static final float HEALTH_EFFECT = -0.06f;
+    public static final float ENERGY_EFFECT_SLEEPING = 0.188f;
+    public static final float ENERGY_EFFECT_NOT_SLEEPING = -0.096f;
+
+
     @Inject
     public StatsModel(SharedPreferencesManager sharedPreferencesManager) {
         this.sharedPreferencesManager = sharedPreferencesManager;
@@ -86,16 +93,16 @@ public class StatsModel {
 
         float newEnergy = currentStats.getEnergy();
         if (Boolean.TRUE.equals(isSleepingLiveData.getValue())) {
-            newEnergy += 0.188f;
+            newEnergy += ENERGY_EFFECT_SLEEPING;
         } else {
-            newEnergy -= 0.096f;
+            newEnergy += ENERGY_EFFECT_NOT_SLEEPING;
         }
-        float newHunger = currentStats.getHunger() - 0.138f;
-        float newHappiness = currentStats.getHappiness() - 0.114f;
+        float newHunger = currentStats.getHunger() + HUNGER_EFFECT;
+        float newHappiness = currentStats.getHappiness() + HAPPINESS_EFFECT;
 
         float newHealth = currentStats.getHealth();
         if (newHunger < 0) {
-            newHealth -= 0.06f;
+            newHealth += HEALTH_EFFECT;
         }
 
         StatsDto newStats = new StatsDto(

@@ -11,6 +11,8 @@
     <string name="settings_dialog_text">Настройки</string>
     <string name="music_settings_switch_text">Музыка</string>
     <string name="sfx_settings_switch_text">Звуковые эффекты</string>
+    <string name="notification_title">Тамагочи</string>
+    <string name="notification_message">Неко Арк нуждается в вашем внимании!</string>
 
     <string name="hunger_desc">Уровень голода</string>
     <string name="happiness_desc">Уровень счастья</string>
