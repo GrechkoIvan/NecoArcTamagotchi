@@ -9,8 +9,7 @@
     <color name="stat_icon_color">#6a295d</color>
     <color name="progress_background_color">#E978635C</color>
     <color name="progress_border_color">#6a295d</color>
-    <color name="stats_panel_color">#EDC8B2</color>
-    <color name="stats_panel_border_color">#D0A277</color>
+    <color name="panel_border_color">#BD8E63</color>
     <color name="scroll_button_arrow_color">#F8F0EB</color>
     <color name="scroll_button_default_background_color">#B48273</color>
     <color name="scroll_button_default_border_color">#896057</color>
@@ -18,6 +17,8 @@
     <color name="scroll_button_pressed_border_color">#A07368</color>
     <color name="settings_dialog_border_color">#AB8360</color>
     <color name="settings_panel_color">#BF997C</color>
+    <color name="money_count_text_background_color">#997960</color>
+    <color name="mine_background_color">#483F33</color>
 
     <color name="action_button_default_background_color">#B48273</color>
     <color name="action_button_default_border_color">#896057</color>

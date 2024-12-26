@@ -42,6 +42,7 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_android_internal_builders_ActivityComponentBuilder;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity{
@@ -102,6 +103,13 @@ public class MainActivity extends AppCompatActivity{
 
         checkNotificationPermission();
 
+        ImageButton mineButton = findViewById(R.id.mine_button);
+        mineButton.setOnClickListener(v -> {
+            sfxManager.playButtonClickSound();
+            Intent intent = new Intent(this, MineActivity.class);
+            startActivity(intent);
+        });
+
         mainViewModel.stopBackgroundStatsUpdating();
         mainViewModel.startRealTimeStatsUpdating();
         mainViewModel.cancelNotification(this);
@@ -112,7 +120,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onStop() {
         mainViewModel.stopRealTimeStatsUpdating();
         mainViewModel.startBackgroundStatsUpdating();
-        backgroundMusicManager.pauseMusic();
         sfxManager.release();
         mainViewModel.scheduleNotification(this);
         super.onStop();
@@ -123,7 +130,6 @@ public class MainActivity extends AppCompatActivity{
         mainViewModel.stopBackgroundStatsUpdating();
         mainViewModel.startRealTimeStatsUpdating();
         mainViewModel.cancelNotification(this);
-        backgroundMusicManager.playMusic();
         super.onResume();
     }
 
@@ -134,6 +140,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
+        sfxManager.playButtonClickSound();
         Fragment selectedFragment = null;
         int itemId = item.getItemId();
 
@@ -158,7 +165,6 @@ public class MainActivity extends AppCompatActivity{
                         .commit();
             }
         }
-        sfxManager.playButtonClickSound();
         return true;
     };
 
@@ -168,21 +174,19 @@ public class MainActivity extends AppCompatActivity{
         ProgressBar healthBar = findViewById(R.id.health_progress);
         ProgressBar energyBar = findViewById(R.id.energy_progress);
 
-        ProgressColorManager progressColorManager = new ProgressColorManager();
-
         float hunger = stats.getHunger();
         float happiness = stats.getHappiness();
         float energy = stats.getEnergy();
         float health = stats.getHealth();
 
         hungerBar.setProgress(Math.round(hunger));
-        progressColorManager.updateProgressColor(hungerBar, Math.round(hunger));
+        ProgressColorManager.updateProgressColor(hungerBar, Math.round(hunger));
         happinessBar.setProgress(Math.round(happiness));
-        progressColorManager.updateProgressColor(happinessBar, Math.round(happiness));
+        ProgressColorManager.updateProgressColor(happinessBar, Math.round(happiness));
         energyBar.setProgress(Math.round(energy));
-        progressColorManager.updateProgressColor(energyBar, Math.round(energy));
+        ProgressColorManager.updateProgressColor(energyBar, Math.round(energy));
         healthBar.setProgress(Math.round(health));
-        progressColorManager.updateProgressColor(healthBar, Math.round(health));
+        ProgressColorManager.updateProgressColor(healthBar, Math.round(health));
     }
 
     private void checkNotificationPermission() {

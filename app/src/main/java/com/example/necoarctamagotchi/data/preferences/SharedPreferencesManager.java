@@ -101,4 +101,12 @@ public class SharedPreferencesManager {
     public boolean getSfxEnabledState() {
         return sharedPreferences.getBoolean("isSfxEnabled", true);
     }
+
+    public int getMoneyCount() {
+        return sharedPreferences.getInt("money", 0);
+    }
+
+    public void saveMoneyCount(int money) {
+        sharedPreferences.edit().putInt("money", money).apply();
+    }
 }

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.necoarctamagotchi.data.dto.AnimationDto;
 import com.example.necoarctamagotchi.data.dto.StatsDto;
 import com.example.necoarctamagotchi.data.model.CharacterAppearanceModel;
+import com.example.necoarctamagotchi.data.model.MoneyModel;
 import com.example.necoarctamagotchi.data.model.SettingsModel;
 import com.example.necoarctamagotchi.data.model.StatsModel;
 import com.example.necoarctamagotchi.utils.NotificationScheduler;
@@ -23,6 +24,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class MainViewModel extends ViewModel {
     private final StatsModel statsModel;
     private final SettingsModel settingsModel;
+    private final MoneyModel moneyModel;
     private final CharacterAppearanceModel characterAppearanceModel;
     private final LiveData<StatsDto> statsLiveData;
     private final Handler statsUpdateHandler = new Handler(Looper.getMainLooper());
@@ -34,10 +36,12 @@ public class MainViewModel extends ViewModel {
     public MainViewModel(
             StatsModel statsModel,
             SettingsModel settingsModel,
+            MoneyModel moneyModel,
             CharacterAppearanceModel characterAppearanceModel) {
 
         this.settingsModel = settingsModel;
         this.statsModel = statsModel;
+        this.moneyModel = moneyModel;
         this.characterAppearanceModel = characterAppearanceModel;
 
         tickSpeedObserver = tickSpeed -> {
@@ -74,6 +78,10 @@ public class MainViewModel extends ViewModel {
         return characterAppearanceModel.getAnimationLiveData();
     }
 
+    public LiveData<Integer> getMoneyCountLiveData() {
+        return moneyModel.getMoneyCountLiveData();
+    }
+
     public void startRealTimeStatsUpdating() {
         statsUpdateHandler.post(statsUpdateRunnable);
     }
@@ -102,7 +110,7 @@ public class MainViewModel extends ViewModel {
         StatsDto statsDto = statsModel.getStatsLiveData().getValue();
         long minDelay = (long) ((statsDto.getHunger() - 30) / (-1 * StatsModel.HUNGER_EFFECT));
         if (minDelay < 0) {
-            minDelay = 60000;
+            minDelay = 1;
         }
 
         long happinessDelay = (long) ((statsDto.getHappiness() - 30) / (-1 * StatsModel.HAPPINESS_EFFECT));
@@ -112,12 +120,12 @@ public class MainViewModel extends ViewModel {
 
         if (!statsModel.getSleepingStateLiveData().getValue()) {
             long energyDelay = (long) ((statsDto.getEnergy() - 30) / (-1 * StatsModel.ENERGY_EFFECT_NOT_SLEEPING));
-            if (energyDelay < minDelay && happinessDelay > 0) {
+            if (energyDelay < minDelay && energyDelay > 0) {
                 minDelay = energyDelay;
             }
         }
 
-        NotificationScheduler.scheduleNotification(context, minDelay);
+        NotificationScheduler.scheduleNotification(context, minDelay * 60000);
     }
 
     public void cancelNotification(Context context) {

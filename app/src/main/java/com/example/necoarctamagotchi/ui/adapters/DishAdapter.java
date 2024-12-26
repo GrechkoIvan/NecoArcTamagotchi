@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,14 +48,17 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
 
     static class DishViewHolder extends RecyclerView.ViewHolder {
         private final ImageView dishImage;
+        private final TextView costText;
 
         public DishViewHolder(View itemView) {
             super(itemView);
             dishImage = itemView.findViewById(R.id.dish_image);
+            costText = itemView.findViewById(R.id.dish_cost_text);
         }
 
         public void bind(DishDto dish) {
             dishImage.setImageResource(dish.getImageResId());
+            costText.setText(String.valueOf(dish.getCost()));
         }
     }
 }

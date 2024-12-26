@@ -17,6 +17,9 @@
         android:theme="@style/Theme.NecoArcTamagotchi"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.MineActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
@@ -25,9 +28,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <receiver android:name=".notifications.NotificationReceiver" />
     </application>
+
 </manifest>

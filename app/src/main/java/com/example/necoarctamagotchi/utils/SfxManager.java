@@ -32,6 +32,9 @@ public class SfxManager {
     private int joy2VoiceId;
     private int flipVoiceId;
     private int sleepVoiceId;
+    private int oreMining1Id;
+    private int oreMining2Id;
+    private int oreMining3Id;
 
     @Inject
     public SfxManager(@ApplicationContext Context context, SettingsModel settingsModel) {
@@ -42,7 +45,7 @@ public class SfxManager {
                 .build();
 
         soundPool = new SoundPool.Builder().
-                setMaxStreams(5).
+                setMaxStreams(10).
                 setAudioAttributes(audioAttributes).
                 build();
 
@@ -62,6 +65,9 @@ public class SfxManager {
         joy2VoiceId = soundPool.load(context, R.raw.sfx_voice_joy2, 1);
         flipVoiceId = soundPool.load(context, R.raw.sfx_voice_flip, 1);
         sleepVoiceId = soundPool.load(context, R.raw.sfx_voice_sleep, 1);
+        oreMining1Id = soundPool.load(context, R.raw.sfx_ore_mining1, 1);
+        oreMining2Id = soundPool.load(context, R.raw.sfx_ore_mining2, 1);
+        oreMining3Id = soundPool.load(context, R.raw.sfx_ore_mining3, 1);
     }
 
     public void playButtonClickSound() {
@@ -173,6 +179,21 @@ public class SfxManager {
     public void playSleepVoice() {
         if (settingsModel.getSfxEnabledStateLiveData().getValue()) {
             soundPool.play(sleepVoiceId, 1, 1, 0, 0, 1);
+        }
+    }
+
+    public void playOreMiningSound() {
+        int randomIndex = random.nextInt(3);
+        switch (randomIndex) {
+            case 0:
+                soundPool.play(oreMining1Id,5,5,0,0,1);
+                break;
+            case 1:
+                soundPool.play(oreMining2Id,5,5,0,0,1);
+                break;
+            case 3:
+                soundPool.play(oreMining3Id,5,5,0,0,1);
+                break;
         }
     }
 

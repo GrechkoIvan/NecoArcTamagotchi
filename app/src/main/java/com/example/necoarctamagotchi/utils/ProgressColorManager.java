@@ -9,7 +9,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.widget.ProgressBar;
 
 public class ProgressColorManager {
-    public void updateProgressColor(ProgressBar progressBar, int value) {
+    public static void updateProgressColor(ProgressBar progressBar, int value) {
         int color = getColorForProgress(value);
 
         if (progressBar.getProgressDrawable() instanceof LayerDrawable) {
@@ -19,7 +19,7 @@ public class ProgressColorManager {
         }
     }
 
-    private int getColorForProgress(int value) {
+    private static int getColorForProgress(int value) {
         float ratio = value / 100f;
 
         int red, green, blue = 0;

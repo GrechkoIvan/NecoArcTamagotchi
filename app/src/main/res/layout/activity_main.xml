@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity"
-    android:background="#DCDCDC">
+    android:background="#DCDCDC" >
 
     <ImageView
         android:id="@+id/main_background"
@@ -57,7 +57,8 @@
         android:background="@drawable/bg_stats_panel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:padding="4dp">
+        android:padding="4dp"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:id="@+id/stat_hunger"
@@ -172,6 +173,51 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/money_panel"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats_panel"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_money_panel"
+        android:gravity="end" >
+
+        <TextView
+            android:id="@+id/money_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:paddingHorizontal="5dp"
+            android:gravity="center_vertical|end"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/action_button_text_color"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/sprite_coin"
+            android:contentDescription="@string/coin_desc" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/mine_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_action_button"
+        android:src="@drawable/ic_pickaxe"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/money_panel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:contentDescription="@string/mine_button_desc" />
 
 
     <FrameLayout

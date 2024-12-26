@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.DishDto;
@@ -93,14 +94,20 @@ public class KitchenFragment extends Fragment {
             sfxManager.playButtonClickSound();
             int currentItemPosition = viewPager.getCurrentItem();
             DishDto dish = kitchenViewModel.getDishes().getValue().get(currentItemPosition);
-            if (dish.getStats().getHappiness() < 0) {
-                sfxManager.playAngerVoice();
+
+            boolean action = kitchenViewModel.feedDish(dish);
+            if (action) {
+                if (dish.getStats().getHappiness() < 0) {
+                    sfxManager.playAngerVoice();
+                } else {
+                    sfxManager.playJoyVoice();
+                }
+                feedButton.setEnabled(false);
+                handler.postDelayed(() -> feedButton.setEnabled(true), 1000);
             } else {
-                sfxManager.playJoyVoice();
+                Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_money_text,Toast.LENGTH_SHORT);
+                toast.show();
             }
-            kitchenViewModel.feedDish(dish);
-            feedButton.setEnabled(false);
-            handler.postDelayed(() -> feedButton.setEnabled(true), 1000);
         });
 
         updateButtonVisibility(0);

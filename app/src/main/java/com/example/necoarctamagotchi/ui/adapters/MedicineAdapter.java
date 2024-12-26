@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,14 +47,17 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
 
     static class MedicineViewHolder extends RecyclerView.ViewHolder {
         private final ImageView medicineImage;
+        private final TextView costText;
 
         public MedicineViewHolder(View itemView) {
             super(itemView);
             medicineImage = itemView.findViewById(R.id.medicine_image);
+            costText = itemView.findViewById(R.id.medicine_cost_text);
         }
 
         public void bind(MedicineDto medicine) {
             medicineImage.setImageResource(medicine.getImageResId());
+            costText.setText(String.valueOf(medicine.getCost()));
         }
     }
 }

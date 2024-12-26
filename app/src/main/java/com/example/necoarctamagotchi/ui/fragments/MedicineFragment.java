@@ -15,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.necoarctamagotchi.R;
+import com.example.necoarctamagotchi.data.dto.DishDto;
+import com.example.necoarctamagotchi.data.dto.MedicineDto;
 import com.example.necoarctamagotchi.ui.adapters.ArcPageTransformer;
 import com.example.necoarctamagotchi.ui.adapters.DishAdapter;
 import com.example.necoarctamagotchi.ui.adapters.MedicineAdapter;
@@ -96,9 +99,16 @@ public class MedicineFragment extends Fragment {
             sfxManager.playButtonClickSound();
             sfxManager.playJoyVoice();
             int currentItemPosition = viewPager.getCurrentItem();
-            medicineViewModel.takeMedicine(currentItemPosition);
-            takeMedicineButton.setEnabled(false);
-            handler.postDelayed(() -> takeMedicineButton.setEnabled(true), 1000);
+            MedicineDto medicine = medicineViewModel.getMedicines().getValue().get(currentItemPosition);
+
+            boolean action = medicineViewModel.takeMedicine(medicine);
+            if (action) {
+                takeMedicineButton.setEnabled(false);
+                handler.postDelayed(() -> takeMedicineButton.setEnabled(true), 1000);
+            } else {
+                Toast toast = Toast.makeText(requireContext(), R.string.toast_lack_of_money_text,Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         updateButtonVisibility(0);
