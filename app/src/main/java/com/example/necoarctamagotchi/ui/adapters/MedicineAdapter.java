@@ -44,7 +44,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
         notifyDataSetChanged();
     }
 
-    static class MedicineViewHolder extends RecyclerView.ViewHolder {
+    public static class MedicineViewHolder extends RecyclerView.ViewHolder {
         private final ImageView medicineImage;
         private final TextView costText;
 

@@ -36,7 +36,6 @@ public class MedicineFragment extends Fragment {
     @Inject
     SfxManager sfxManager;
 
-    private MedicineViewModel mViewModel;
     Handler handler = new Handler();
 
     MedicineAdapter medicineAdapter;

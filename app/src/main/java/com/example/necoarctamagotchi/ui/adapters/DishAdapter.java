@@ -44,7 +44,7 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
         notifyDataSetChanged();
     }
 
-    static class DishViewHolder extends RecyclerView.ViewHolder {
+    public static class DishViewHolder extends RecyclerView.ViewHolder {
         private final ImageView dishImage;
         private final TextView costText;
 

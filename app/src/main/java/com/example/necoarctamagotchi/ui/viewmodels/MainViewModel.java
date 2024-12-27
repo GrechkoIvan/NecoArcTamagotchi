@@ -110,7 +110,7 @@ public class MainViewModel extends ViewModel {
         StatsDto statsDto = statsModel.getStatsLiveData().getValue();
         long minDelay = (long) ((statsDto.getHunger() - 30) / (-1 * StatsModel.HUNGER_EFFECT));
         if (minDelay < 0) {
-            minDelay = 1;
+            minDelay = 5;
         }
 
         long happinessDelay = (long) ((statsDto.getHappiness() - 30) / (-1 * StatsModel.HAPPINESS_EFFECT));

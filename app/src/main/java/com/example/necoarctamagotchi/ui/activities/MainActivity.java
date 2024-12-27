@@ -3,7 +3,6 @@ package com.example.necoarctamagotchi.ui.activities;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -203,11 +202,9 @@ public class MainActivity extends AppCompatActivity{
                 new AlertDialog.Builder(this)
                         .setTitle(getResources().getString(R.string.permission_dialog_title))
                         .setMessage(getResources().getString(R.string.permission_dialog_message))
-                        .setPositiveButton(getResources().getString(R.string.permission_dialog_positive_button_text), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
-                                startActivity(intent);
-                            }
+                        .setPositiveButton(getResources().getString(R.string.permission_dialog_positive_button_text), (dialog, which) -> {
+                            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                            startActivity(intent);
                         })
                         .setNegativeButton(getResources().getString(R.string.permission_dialog_negative_button_text), null)
                         .show();

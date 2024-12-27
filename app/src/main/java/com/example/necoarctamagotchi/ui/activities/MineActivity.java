@@ -124,7 +124,7 @@ public class MineActivity extends AppCompatActivity {
         int[] location = new int[2];
         moneyCountText.getLocationOnScreen(location);
 
-        coinEffect.setX(location[0] + moneyCountText.getWidth() / 2 - 40);
+        coinEffect.setX(location[0] + moneyCountText.getWidth() / 2f - 40);
         coinEffect.setY(location[1] - 70);
         ((ViewGroup) findViewById(R.id.mine)).addView(coinEffect);
 

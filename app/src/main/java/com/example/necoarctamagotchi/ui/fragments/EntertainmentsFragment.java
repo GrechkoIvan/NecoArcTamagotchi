@@ -29,7 +29,6 @@ public class EntertainmentsFragment extends Fragment {
     @Inject
     SfxManager sfxManager;
 
-    private EntertainmentsViewModel mViewModel;
     Handler handler = new Handler();
 
     public static EntertainmentsFragment newInstance() {
@@ -61,13 +60,10 @@ public class EntertainmentsFragment extends Fragment {
                 pepsiToyButton.setEnabled(false);
                 danceButton.setEnabled(false);
                 flipButton.setEnabled(false);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        pepsiToyButton.setEnabled(true);
-                        danceButton.setEnabled(true);
-                        flipButton.setEnabled(true);
-                    }
+                handler.postDelayed(() -> {
+                    pepsiToyButton.setEnabled(true);
+                    danceButton.setEnabled(true);
+                    flipButton.setEnabled(true);
                 }, 3200);
             }
         });
@@ -84,13 +80,10 @@ public class EntertainmentsFragment extends Fragment {
                 pepsiToyButton.setEnabled(false);
                 danceButton.setEnabled(false);
                 flipButton.setEnabled(false);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        pepsiToyButton.setEnabled(true);
-                        danceButton.setEnabled(true);
-                        flipButton.setEnabled(true);
-                    }
+                handler.postDelayed(() -> {
+                    pepsiToyButton.setEnabled(true);
+                    danceButton.setEnabled(true);
+                    flipButton.setEnabled(true);
                 }, 4500);
             }
         });
@@ -107,13 +100,10 @@ public class EntertainmentsFragment extends Fragment {
                 pepsiToyButton.setEnabled(false);
                 danceButton.setEnabled(false);
                 flipButton.setEnabled(false);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        pepsiToyButton.setEnabled(true);
-                        danceButton.setEnabled(true);
-                        flipButton.setEnabled(true);
-                    }
+                handler.postDelayed(() -> {
+                    pepsiToyButton.setEnabled(true);
+                    danceButton.setEnabled(true);
+                    flipButton.setEnabled(true);
                 }, 900);
             }
         });
