@@ -39,4 +39,6 @@
     <string name="gold_ore_desc">Добыча золотой руды</string>
     <string name="mine_close_button_desc">Вернуться на главный экран</string>
     <string name="coin_desc">Количество монет</string>
+    <string name="music_desc">Музыка</string>
+    <string name="sfx_desc">Звуковые эффекты</string>
 </resources>

@@ -47,7 +47,7 @@ public class SettingsDialog extends DialogFragment {
         super.onStart();
         int width = (int) TypedValue.applyDimension(
                 COMPLEX_UNIT_DIP,
-                 300,
+                 350,
                 getResources().getDisplayMetrics());
         int height = (int) TypedValue.applyDimension(
                 COMPLEX_UNIT_DIP,
