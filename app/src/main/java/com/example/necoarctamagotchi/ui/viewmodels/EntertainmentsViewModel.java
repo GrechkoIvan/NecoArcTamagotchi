@@ -1,7 +1,5 @@
 package com.example.necoarctamagotchi.ui.viewmodels;
 
-import android.widget.Toast;
-
 import androidx.lifecycle.ViewModel;
 
 import com.example.necoarctamagotchi.data.dto.StatsDto;

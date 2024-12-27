@@ -1,7 +1,5 @@
 package com.example.necoarctamagotchi.data.dto;
 
-import com.example.necoarctamagotchi.ui.viewmodels.MedicineViewModel;
-
 public class MedicineDto {
     private final int imageResId;
     private final float healthEffect;

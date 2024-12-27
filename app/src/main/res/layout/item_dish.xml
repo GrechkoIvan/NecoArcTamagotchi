@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/plate"/>
+        android:src="@drawable/sprite_plate"/>
 
     <ImageView
         android:id="@+id/dish_image"

@@ -21,14 +21,12 @@ import com.example.necoarctamagotchi.data.dto.DishDto;
 import com.example.necoarctamagotchi.ui.adapters.ArcPageTransformer;
 import com.example.necoarctamagotchi.ui.adapters.DishAdapter;
 import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
-import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
 import com.example.necoarctamagotchi.utils.SfxManager;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import dagger.hilt.EntryPoint;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint

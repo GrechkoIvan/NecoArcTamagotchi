@@ -16,7 +16,6 @@ import android.widget.ImageView;
 
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
-import com.example.necoarctamagotchi.ui.viewmodels.KitchenViewModel;
 import com.example.necoarctamagotchi.utils.SfxManager;
 
 import javax.inject.Inject;

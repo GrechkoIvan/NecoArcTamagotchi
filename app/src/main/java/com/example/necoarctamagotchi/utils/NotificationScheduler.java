@@ -5,12 +5,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.provider.Settings;
 
 import com.example.necoarctamagotchi.notifications.NotificationReceiver;
 
 public class NotificationScheduler {
     public static void scheduleNotification (Context context, long delayInMillis) {
+        //Интент для запуска уведомления
         Intent intent = new Intent(context, NotificationReceiver.class);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
@@ -19,6 +19,7 @@ public class NotificationScheduler {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
+        //После 12 версии Android нужно проверять разрешения
         if (alarmManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 if (alarmManager.canScheduleExactAlarms()) {

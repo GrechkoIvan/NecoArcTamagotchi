@@ -1,6 +1,5 @@
 package com.example.necoarctamagotchi.ui.adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.data.dto.DishDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder>{

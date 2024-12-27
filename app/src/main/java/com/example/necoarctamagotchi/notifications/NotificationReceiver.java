@@ -12,8 +12,6 @@ import androidx.core.app.NotificationCompat;
 import com.example.necoarctamagotchi.R;
 import com.example.necoarctamagotchi.ui.activities.MainActivity;
 
-import java.util.zip.CheckedInputStream;
-
 public class NotificationReceiver extends BroadcastReceiver {
     private static final String CHANNEL_ID = "game_notification_channel";
 
@@ -24,6 +22,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         String title = context.getString(R.string.notification_title);
         String message = context.getString(R.string.notification_message);
 
+        // Интент для открытия приложения по нажатию на уведомление
         Intent notificationIntent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 context,
@@ -32,6 +31,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
+        //Создание уведомления
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)

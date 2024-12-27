@@ -3,9 +3,6 @@ package com.example.necoarctamagotchi.di;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.necoarctamagotchi.data.model.SettingsModel;
-import com.example.necoarctamagotchi.utils.BackgroundMusicManager;
-
 import javax.inject.Singleton;
 
 import dagger.Module;

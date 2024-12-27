@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.necoarctamagotchi.R;
-import com.example.necoarctamagotchi.ui.viewmodels.BedroomViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.EntertainmentsViewModel;
 import com.example.necoarctamagotchi.utils.SfxManager;
 

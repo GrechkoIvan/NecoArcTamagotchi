@@ -8,6 +8,8 @@ import com.example.necoarctamagotchi.data.preferences.SharedPreferencesManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+// Репозиторий для управления деньгами
+
 @Singleton
 public class MoneyModel {
     private final SharedPreferencesManager sharedPreferencesManager;

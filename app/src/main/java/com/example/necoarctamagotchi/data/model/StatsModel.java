@@ -9,6 +9,8 @@ import com.example.necoarctamagotchi.data.preferences.SharedPreferencesManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+// Репозиторий для управления характеристиками
+
 @Singleton
 public class StatsModel {
     private final SharedPreferencesManager sharedPreferencesManager;

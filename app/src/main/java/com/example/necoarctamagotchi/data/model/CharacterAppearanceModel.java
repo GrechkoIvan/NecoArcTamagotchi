@@ -14,6 +14,8 @@ import java.util.Random;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+// Репозиторий для управления анимациями и скинами
+
 @Singleton
 public class CharacterAppearanceModel {
     private final SharedPreferencesManager sharedPreferencesManager;

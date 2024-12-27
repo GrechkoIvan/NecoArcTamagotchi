@@ -37,12 +37,9 @@ import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
 import com.example.necoarctamagotchi.utils.SfxManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Objects;
-
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_android_internal_builders_ActivityComponentBuilder;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity{

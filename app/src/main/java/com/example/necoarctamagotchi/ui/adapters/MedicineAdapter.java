@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.necoarctamagotchi.R;
-import com.example.necoarctamagotchi.data.dto.DishDto;
 import com.example.necoarctamagotchi.data.dto.MedicineDto;
 
 import java.util.List;

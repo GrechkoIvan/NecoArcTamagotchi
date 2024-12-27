@@ -15,7 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.necoarctamagotchi.R;
-import com.example.necoarctamagotchi.ui.viewmodels.MainViewModel;
 import com.example.necoarctamagotchi.ui.viewmodels.MineViewModel;
 import com.example.necoarctamagotchi.utils.BackgroundMusicManager;
 import com.example.necoarctamagotchi.utils.MoneyCountTextFormatter;
