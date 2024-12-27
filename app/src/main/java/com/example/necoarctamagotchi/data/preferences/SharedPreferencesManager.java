@@ -62,7 +62,7 @@ public class SharedPreferencesManager {
     }
 
     public long getLastClosedTime() {
-        return sharedPreferences.getLong("lastClosedTime", 0);
+        return sharedPreferences.getLong("lastClosedTime", System.currentTimeMillis());
     }
 
     public void saveSleepingState(boolean isSleeping) {
