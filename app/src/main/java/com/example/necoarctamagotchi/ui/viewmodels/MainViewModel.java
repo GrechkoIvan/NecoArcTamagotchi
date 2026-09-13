@@ -125,7 +125,7 @@ public class MainViewModel extends ViewModel {
             }
         }
 
-        NotificationScheduler.scheduleNotification(context, minDelay * 60000);
+        NotificationScheduler.scheduleNotification(context, minDelay * tickSpeed);
     }
 
     public void cancelNotification(Context context) {
