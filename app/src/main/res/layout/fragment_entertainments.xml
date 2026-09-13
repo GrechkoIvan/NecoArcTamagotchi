@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_fragment"
+    tools:context=".ui.fragments.EntertainmentsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/pepsi_toy_entertainment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_pepsi_toy_button"
+            android:background="@drawable/bg_action_button"
+            android:contentDescription="@string/pepsi_toy_button_desc"/>
+
+        <ImageButton
+            android:id="@+id/dance_entertainment_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_dance_button"
+            android:background="@drawable/bg_action_button"
+            android:contentDescription="@string/dance_button_desc"/>
+
+        <ImageButton
+            android:id="@+id/flip_entertainment_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_flip_button"
+            android:background="@drawable/bg_action_button"
+            android:contentDescription="@string/flip_button_desc"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

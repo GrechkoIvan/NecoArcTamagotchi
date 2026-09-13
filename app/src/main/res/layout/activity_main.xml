@@ -5,12 +5,225 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.MainActivity"
+    android:background="#DCDCDC" >
+
+    <ImageView
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        android:src="@drawable/bg_main_activity"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/background_desc"/>
+
+    <ImageView
+        android:id="@+id/neco_arc"
+        android:layout_width="0dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="150dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/neco_arc_image_desc"/>
+
+    <View
+        android:id="@+id/dim_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_settings"
+        android:background="@drawable/bg_action_button"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/settings_button_desc" />
+
+    <LinearLayout
+        android:id="@+id/stats_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_stats_panel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:padding="4dp"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:id="@+id/stat_hunger"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_hunger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_hunger_stat"
+                android:contentDescription="@string/hunger_desc"/>
+
+            <ProgressBar
+                android:id="@+id/hunger_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_happiness"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_happiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_happiness_stat"
+                android:contentDescription="@string/happiness_desc"/>
+
+            <ProgressBar
+                android:id="@+id/happiness_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_health"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_health_stat"
+                android:contentDescription="@string/health_desc"/>
+
+            <ProgressBar
+                android:id="@+id/health_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stat_energy"
+            android:layout_width="@dimen/stats_bars_width"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:id="@+id/icon_energy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_energy_stat"
+                android:contentDescription="@string/energy_desc"/>
+
+            <ProgressBar
+                android:id="@+id/energy_progress"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="50"
+                android:progressDrawable="@drawable/rounded_progress_bar"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/money_panel"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats_panel"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_money_panel"
+        android:gravity="end" >
+
+        <TextView
+            android:id="@+id/money_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:paddingHorizontal="5dp"
+            android:gravity="center_vertical|end"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/action_button_text_color"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/sprite_coin"
+            android:contentDescription="@string/coin_desc" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/mine_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_action_button"
+        android:src="@drawable/ic_pickaxe"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/money_panel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:contentDescription="@string/mine_button_desc" />
+
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/fragment_height"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,10 +231,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/iconColor"
-        app:itemTextColor="@color/iconColor"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/navigation_menu" />
+        app:itemIconTint="@color/navigation_icon_color"
+        app:itemTextColor="@color/navigation_icon_color"
+        android:background="@drawable/bg_bottom_nav_menu"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:labelVisibilityMode="selected"
+        app:menu="@menu/navigation_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
